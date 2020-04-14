@@ -7,6 +7,16 @@ function Toggle() {
         temp.type = "password";
     }
 }
+function Toggle() {
+    var temp = document.getElementById("pas1");
+    if (temp.type === "password") {
+        temp.type = "text";
+    } else {
+        temp.type = "password";
+    }
+}
+
+
 $(document).ready(function () {
     $('#fpass').on('click', () => {
         Swal.fire({
@@ -14,7 +24,7 @@ $(document).ready(function () {
             html: "Username: Perilee, Password: Cb9javaPT",
             confirmButtonText: "ok"
         }).then(function () {
-            window.location.href = "forgotPass.jsp";
+            window.location.href = "team_project/loginPage.html";
         });
     });
 
@@ -29,35 +39,32 @@ $(document).ready(function () {
         $("#submitBtn").css("color", "white");
     });
 
-    var attempt = 3;
+
     $('#submitBtn').on('click', () => {
-        var inputName = $('#uName').val();
         var password = $('#pas').val();
-        if (inputName == 'Perilee' && password == 'Cb9javaPT') {
+        var pasConfirm = $('#pas1').val();
+        if ((pasConfirm == password) && ((pasConfirm != "") && (password != ""))) {
             Swal.fire({
                 title: "<i>Account</i>",
-                html: "Login Successful!!",
+                html: "Submit Successful!!",
                 confirmButtonText: "ok"
             }).then(function () {
-                window.location.href = "/form/form.html";
+                window.location.href = "loginPage.html";
             });
 
+        } else if ((pasConfirm == "") && (password == "")) {
+            Swal.fire({
+                title: "<i>Unseccussful</i>",
+                html: "Please type your new password.",
+                confirmButtonText: "ok",
+            });
         } else {
-            attempt--;
-            if (attempt > 0) {
-                Swal.fire({
-                    title: "<i>Unseccussful</i>",
-                    html: "You have left " + attempt + " attempt.",
-                    confirmButtonText: "ok",
-                });
-            } else if (attempt == 0) {
-                Swal.fire({
-                    title: "<i>Unseccussful</i>",
-                    html: "No more attempts. Reclaim your password by pressing Forgot my password.",
-                    confirmButtonText: "ok",
-                });
-                $('#submitBtn').prop('disabled', true);
-            }
+            Swal.fire({
+                title: "<i>Unseccussful</i>",
+                html: "Password inputs are not equal.",
+                confirmButtonText: "ok",
+            });
+
         }
     })
 

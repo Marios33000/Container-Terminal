@@ -22,7 +22,7 @@ public class UserController {
     @GetMapping("/")
     public String start(){
     
-    return "test";
+    return "loginPage";
     }
     
     

@@ -25,6 +25,12 @@ public class UserController {
     return "loginPage";
     }
     
+    @GetMapping("/forgotPage.jsp")
+    public String forgotPass(){
+    
+    return "forgotPass";
+    }
+    
     
     
     @GetMapping("/login")

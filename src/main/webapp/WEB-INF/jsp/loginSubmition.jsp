@@ -16,10 +16,14 @@
         
         
         
-        <form method="post" action="/submit"> 
-             <label for="fname">First name:</label><br>
-  <input type="text"  name="fname"><br>
+        <form method="post" action="/submitlogin"> 
+             
+            <label for="fname">First name:</label><br>
+  
+             <input type="text"  name="fname"><br>
+  
   <label for="pas">Password:</label><br>
+  
   <input type="password"  name="pas"><br>       
   
             
@@ -31,10 +35,11 @@
         
         
         
-        <span>
+        <span style="color:red">
+            
             ${message}
-        </span>
         
+        </span>
         
         
        

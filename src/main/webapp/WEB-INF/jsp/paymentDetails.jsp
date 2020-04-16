@@ -31,31 +31,25 @@ td {
         
          <table border = "1">
          <tr>
+             <th>Container Name</th>
             <th>Type</th>
-            <th>Date</th>
-            <th>Weight</th>
-            <th>De thymamai giati einai to 3eurw.</th>
-         </tr>
-         <tr>
-            <td>N</td>
-            <td>0-2 days</td>
-            <td>20</td>
-           
-         </tr>
-         
-         <tr>
-            <td>C</td>
-            <td>3-10 days</td>
-            <td>40</td>
+              <th>Weight</th>
+        
+            <th>Date  Discharged</th>
+            <th>Payment Date</th>
+            <th>Amount</th>
+            <th>Total</th>
           
          </tr>
-          <tr>
-            <td>M</td>
-            <td>10-* days</td>
-            </tr>
+
+         
+         <tr>
+             ${container}
+         </tr>
+         
       </table>
         
-        
+        <button>Paypal</button>
         
         
         

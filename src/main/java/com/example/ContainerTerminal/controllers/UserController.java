@@ -26,7 +26,7 @@ public class UserController {
     @GetMapping("/")
     public String start() {
 
-        return "test";
+        return "loginPage";
     }
 
     @GetMapping("/login")
@@ -41,7 +41,8 @@ public class UserController {
         User u = userinterface.findByUsername(username);
         if (u == null) {
                       mm.addAttribute("message", "To username einai lathos");
-            return "loginSubmition";
+            return "loginSubmi   if (u == null) {\n" +
+"                      mm.addAttribute(\"message\", \"To username einai lathos\");tion";
         } else {
             if (password.equals(u.getPassword())) {
                 session.setAttribute("user", u);

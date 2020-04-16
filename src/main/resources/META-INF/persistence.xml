@@ -5,6 +5,7 @@
     <class>com.example.ContainerTerminal.models.Seawaybill</class>
     <class>com.example.ContainerTerminal.models.Admin</class>
     <class>com.example.ContainerTerminal.models.User</class>
+    <class>com.example.ContainerTerminal.models.Container</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/containerterminal?useSSL=false&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC "/>

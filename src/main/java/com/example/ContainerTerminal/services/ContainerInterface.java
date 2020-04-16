@@ -5,9 +5,14 @@
  */
 package com.example.ContainerTerminal.services;
 
-import com.example.ContainerTerminal.models.Seawaybill;
+import com.example.ContainerTerminal.models.Container;
+import java.util.List;
 
 
-public interface SeaWayBillInterface {
+
+public interface ContainerInterface {
   
+   public List<Container> getAllContainers();
+
+
 }

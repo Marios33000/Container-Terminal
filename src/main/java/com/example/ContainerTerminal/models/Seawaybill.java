@@ -14,6 +14,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mario
  */
 @Entity
+
 @Table(name = "seawaybill")
 @XmlRootElement
 @NamedQueries({
@@ -59,6 +64,9 @@ public class Seawaybill implements Serializable {
     private short paid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ordernumber")
     private Collection<Container> containerCollection;
+    @JoinColumn(name = "userid", referencedColumnName = "userid")
+    @ManyToOne(optional = false)
+    private User userid;
 
     public Seawaybill() {
     }
@@ -113,6 +121,14 @@ public class Seawaybill implements Serializable {
 
     public void setContainerCollection(Collection<Container> containerCollection) {
         this.containerCollection = containerCollection;
+    }
+
+    public User getUserid() {
+        return userid;
+    }
+
+    public void setUserid(User userid) {
+        this.userid = userid;
     }
 
     @Override

@@ -55,8 +55,7 @@
 
  
  </table> 
-        <a href="/payment">See Payment Details*</a>
-        <button>Pay*</button>
-        
+        <a href="/payment">Pay</a>
+  
     </body>
 </html>

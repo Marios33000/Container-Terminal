@@ -14,9 +14,9 @@
     <body>
         
         
+<!--        
         
-        
-        <form method="post" action="/submitlogin"> 
+        <form method="post" action="/submitealogin"> 
              
             <label for="fname">First name:</label><br>
   
@@ -41,7 +41,7 @@
         
         </span>
         
-        
+        -->
        
         
         

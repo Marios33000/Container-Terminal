@@ -110,7 +110,7 @@ public class UserController {
             PriceDao pd = new PriceDao();
 
             String string = containers.get(i).getType();
-            String[] parts = string.split("-");
+            String[] parts = string.split(" ");
             String part1 = parts[0]; // 20
             String part2 = parts[1]; // C
 

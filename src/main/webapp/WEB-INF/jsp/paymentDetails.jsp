@@ -22,16 +22,16 @@ td {
 }
     </style>
     <body>
-        <h1>Mplaa mpla !</h1>
+        <h1>Invoice !</h1>
         
         
         ${user.username}
    
         
-        <div>  ${container.getOrdernumber().getBookingnumber()}   </div>
+       
         <c:set var="count" value="0"  scope="page"/>  
      <c:forEach items="${containers}" var="container" >
-       
+       <div>${container.getOrdernumber().getBookingnumber()}</div>
          <div>  <b> ${container.getContainername()}  </b> </div>
                     
                    <div>   ${container.getType()} ==>  ${prices.get(count).getTotal()}$</div>

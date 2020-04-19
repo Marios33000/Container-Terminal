@@ -1,0 +1,154 @@
+*   /* Style the search Bar */
+  #searchBar input[type=text] {
+    padding: 10px;
+    padding-left: 30px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%; 
+    background: white;
+  }    
+  #searchBar button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+  }  
+  #searchBar button:hover {
+    background: #0b7dda;
+  }
+  #searchBar, #datepicker, #datepicker1, #searchBar1{
+      position: relative;      
+  }
+  span.angles{
+      float: right;
+      margin-top: -11.5%;
+      margin-right: 5%;
+      color: white;
+  }
+  #searchBar i{
+      position: absolute;
+      left: 0px;
+      top: 8px;
+      padding: 8px;      
+  }
+  #searchBar1 i{
+    position: absolute;
+    left: 87px;
+    top: 4px;
+    padding: 8px;
+    color: gray;      
+}
+  .container{
+      margin-top: 10px;
+      width:1000px      
+  }
+  .col-sm-2{
+    border: 2px solid gray;
+    border-top: none;
+    border-bottom: none;    
+ }
+ #datepicker, #datepicker1{
+   background-color: transparent;
+   border: 2px solid black;     
+ } 
+ .fa-calendar{
+   color: black;
+   float: left;
+   margin-top: -7%;
+   margin-left: 3%;
+ }
+ #checkDate, #checkDate1{
+   color: black;
+   margin-top: -7%;
+   margin-left: 13%;
+ }
+ #conBorder{
+   border: 2px solid white;
+   margin-top: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ #family{
+   border: 2px solid;
+   text-align: center;
+ }
+ .slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;  
+  background: gray;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;  
+  position: relative;
+  margin-top: 13%;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: lightgray;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;  
+  cursor: pointer;
+}
+.slider::-ms-thumb{
+  background: black;
+}
+#myLabel{
+position: absolute;
+padding-top: 1%;
+font-size: 15px;
+}
+#myLabel1{
+  position: absolute;  
+padding-top: 1%;
+font-size: 13px;
+padding-left: 70%;
+}
+#myLabel2{
+  position: absolute;  
+padding-top: 1%;
+font-size: 15px;
+padding-left: 35%;
+}
+#stars, #guestRates{
+  width: 100%;
+  background-color: transparent;
+  border: none;  
+}
+
+/*  */
+.slider-selection {
+  background: blue !important;   
+}
+.slider.slider-horizontal {
+    width: 100% !important;
+    height: 10px !important;    
+}
+.slider-handle {
+  margin-top: -5px;
+	background-color: lightgray !important;
+	background-image: none !important;	
+}
+
+iframe{
+  height:50px;
+  margin-top:8%;
+}
+

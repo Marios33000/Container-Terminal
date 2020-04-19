@@ -25,8 +25,13 @@ public class UserController {
 
     @GetMapping("/")
     public String start() {
-
-        return "loginPage";}
+        return "datepicker";
+    }
+    
+//    @GetMapping("/")
+//    public String start() {
+//
+//        return "loginPage";}
 //    public String start(){
 //    
 //    return "loginPage";

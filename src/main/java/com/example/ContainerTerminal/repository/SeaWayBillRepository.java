@@ -6,9 +6,16 @@
 package com.example.ContainerTerminal.repository;
 
 import com.example.ContainerTerminal.models.Seawaybill;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 
-public interface SeaWayBillRepository extends CrudRepository<Seawaybill,Integer> {
-    
+public interface SeaWayBillRepository extends JpaRepository<Seawaybill,Integer> {
+
 }
+    
+
+ 
+    

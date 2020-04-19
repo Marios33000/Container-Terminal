@@ -6,8 +6,11 @@
 package com.example.ContainerTerminal.services;
 
 import com.example.ContainerTerminal.models.Seawaybill;
+import java.util.List;
 
 
 public interface SeaWayBillInterface {
   
+public List<Seawaybill> getAll();
+    
 }

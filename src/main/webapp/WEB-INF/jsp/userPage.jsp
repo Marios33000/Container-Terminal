@@ -15,7 +15,7 @@
         <h1>Hello ${user.username} !</h1>
         
         
-        <a href="/record">History</a>
+        <a href="/history">History</a>
        
         <form method="post" action="/search">
                <label for="search">Search :</label><br>

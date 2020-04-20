@@ -8,14 +8,14 @@ function jsPrintAll() {
     }, 500);
 }
 function parseDate(input) {
-    // Transform date from text to date    
-    var parts = input.match(/(\d+)/g);
-    // new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
-    return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
+//    // Transform date from text to date    
+//    var parts = input.match(/(\d+)/g);
+//    // new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
+//    return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
 
-//    var parts = input.split("-");
-//    var date = new Date(parts[2], parts[1] - 1, parts[0]);
-//     return date;
+    var parts = input.split("-");
+    var date = new Date(parts[0], parts[1]-1, parts[2]);
+     return date;
 }
 function allagi(index) {
     console.log($("#datepicker" + index).val());

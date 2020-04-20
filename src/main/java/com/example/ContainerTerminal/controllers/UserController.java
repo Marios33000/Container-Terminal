@@ -44,18 +44,11 @@ public class UserController {
 //    
 //    return "loginPage";
 //    }
-    
 //    @GetMapping("/forgotPage.jsp")
 //    public String forgotPass(){
 //    
 //    return "forgotPass";
 //    }
-
-    @GetMapping("/login")
-    public String goToLoginPage() {
-        return "loginPage";
-    }
-
     @PostMapping("/submitlogin")
     public String login(@RequestParam(name = "fname") String username,
             @RequestParam(name = "pas") String password, ModelMap mm, HttpSession session
@@ -68,7 +61,7 @@ public class UserController {
         } else {
             if (password.equals(u.getPassword())) {
                 session.setAttribute("user", u);
-                return "userPage";
+                return "welcome";
             } else {
                 mm.addAttribute("message", "To password einai lathos");
                 return "loginPage";
@@ -92,13 +85,12 @@ public class UserController {
         if (exists == true) {
             session.setAttribute("containers", containers);
             mm.addAttribute("containers", containers);
-            return "containerinfo";
+            return "c_table";
         } else {
             return "userPage";
         }
     }
 
-    
     @GetMapping("/payment")
     public String goToPaymentDetails(ModelMap mm, HttpSession session) {
 
@@ -132,14 +124,16 @@ public class UserController {
             } else {
                 pd.setType(50);
                 totalCounter += 50;
-            }
+            }         
 
-            pd.setDate(20);
-            totalCounter += 20;
             pd.setTotal(totalCounter);
             prices.add(pd);
         }
 
+//   mm.addAttribute("prices",prices);
+//    return "Payment";
+//   
+//}
         mm.addAttribute("prices", prices);
         return "paymentDetails1";
 
@@ -168,7 +162,6 @@ public class UserController {
 //   
         mm.addAttribute("kappa", all);
 
-        return "history";
+        return "wb_table";
     }
-
 }

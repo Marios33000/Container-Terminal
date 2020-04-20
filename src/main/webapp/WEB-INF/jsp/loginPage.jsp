@@ -54,7 +54,7 @@
     </div>
 </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>-->
     <script src="/script/loginScripts.js"></script>
 
 </body>

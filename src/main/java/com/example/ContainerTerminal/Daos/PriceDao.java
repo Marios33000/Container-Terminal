@@ -5,7 +5,7 @@ public class PriceDao {
  
     private int type;
     private int weight;
-    private int date;
+  
     private int total;
 
     public int getType() {
@@ -14,7 +14,7 @@ public class PriceDao {
 
     @Override
     public String toString() {
-        return "PriceDao{" + "type=" + type + ", weight=" + weight + ", date=" + date + ", total=" + total + '}';
+        return "PriceDao{" + "type=" + type + ", weight=" + weight + ", + , total=" + total + '}';
     }
 
     public void setType(int type) {
@@ -27,14 +27,6 @@ public class PriceDao {
 
     public void setWeight(int weight) {
         this.weight = weight;
-    }
-
-    public int getDate() {
-        return date;
-    }
-
-    public void setDate(int date) {
-        this.date = date;
     }
 
     public int getTotal() {

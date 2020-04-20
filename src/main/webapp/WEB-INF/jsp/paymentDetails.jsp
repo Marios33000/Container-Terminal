@@ -37,7 +37,7 @@ td {
                    <div>   ${container.getType()} ==>  ${prices.get(count).getTotal()}$</div>
                  
                    <div>   ${container.getDate()}  </div>
-                   <div>   ${container.getDate()}  </div>
+               
                   
                    <br>
       

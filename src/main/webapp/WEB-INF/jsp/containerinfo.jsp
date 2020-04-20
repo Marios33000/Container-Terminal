@@ -36,11 +36,11 @@
                         
                         <c:choose>
     <c:when test="${ container.getDischarged()==0}">
-       ${"Den exei fygei akoma*"}
+       ${"No"}
         <br />
     </c:when>    
     <c:otherwise>
-        ${"einai etoimo*"} 
+        ${"Yes"} 
         <br />
     </c:otherwise>
 </c:choose>

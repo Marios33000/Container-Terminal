@@ -36,10 +36,7 @@ public class UserController {
         return "loginPage";
     }
 
-    @GetMapping("/login")
-    public String goToLoginPage() {
-        return "loginPage";
-    }
+ 
 
     @PostMapping("/submitlogin")
     public String login(@RequestParam(name = "fname") String username,
@@ -53,7 +50,7 @@ public class UserController {
         } else {
             if (password.equals(u.getPassword())) {
                 session.setAttribute("user", u);
-                return "userPage";
+                return "welcome";
             } else {
              mm.addAttribute("message", "To password einai lathos");
                 return "loginPage";
@@ -77,9 +74,9 @@ public class UserController {
         if (exists == true) {
             session.setAttribute("containers", containers);
             mm.addAttribute("containers", containers);
-            return "containerinfo";
+            return "c_table";
         } else {
-      return "userPage";
+      return "c_table";
      }
     }
     
@@ -122,14 +119,13 @@ String part2 = parts[1]; // C
                 totalCounter+=50;
             }
             
-            pd.setDate(20);
             totalCounter+=20;
             pd.setTotal(totalCounter);
             prices.add(pd);
         }
    
    mm.addAttribute("prices",prices);
-    return "paymentDetails";
+    return "Payment";
    
 }
 
@@ -168,7 +164,7 @@ public String getHistoryOfUser(ModelMap mm,HttpSession session){
        
    mm.addAttribute("kappa",all);
    
-return "history";
+return "wb_table";
 }
 
 

@@ -1,12 +1,12 @@
 *  
-  #datepicker, #datepicker1{
+  .datepicker, .datepicker1{
       position: relative;      
   }
   .container{
       margin-top: 10px;
       width:1000px      
   }
- #datepicker, #datepicker1, #dateDiff{
+ .datepicker, .datepicker1, #dateDiff{
    background-color: transparent;
    border: 2px solid black;   
    margin-left: 5%;  

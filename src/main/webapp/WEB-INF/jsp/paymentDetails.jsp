@@ -21,7 +21,7 @@
           rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/datepicker.css">
+<!--    <link rel="stylesheet" href="css/datepicker.css">-->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
@@ -37,22 +37,21 @@
 
         <br><br>
         <c:set var="count" value="0"  scope="page"/>  
-        <c:forEach items="${containers}" var="container" >
+        <c:forEach items="${containers}" var="container" varStatus="loop">
             <div>${container.getOrdernumber().getBookingnumber()}</div>
             <div>  <b> ${container.getContainername()}  </b> </div>
 
             <div>   ${container.getType()} ==>  ${prices.get(count).getTotal()}$</div>
 
             <div class="row" style="padding-top: 1%;">
-                <div class="col-sm-2"><input id="datepicker" type="date" format="dd-mm-yyyy" class="form-control form-control text-center" value="${container.getDate()}" disabled="true">
+                <div class="col-sm-2"><input id="datepicker${loop.index}" type="date" format="dd-mm-yyyy" class="form-control form-control text-center" value="${container.getDate()}" disabled="true">
                     <i class="fas fa-calendar"></i>           
                 </div>
-                <div class="col-sm-2"><input id="datepicker1" type="button" class="form-control form-control text-center">
+                <div class="col-sm-2"><input id="datepicker1${loop.index}" type="button" onchange="allagi('${loop.index}')" class="form-control form-control text-center">
                     <i class="fas fa-calendar"></i>           
                 </div>
                 <div class="col-sm-2">
-<!--                    <input type="text" id="${count}" disabled>-->
-                    <input type="text" id="showDiff" disabled>
+                    <input type="text" id="showDiff${loop.index}" disabled>
                 </div>
             </div>
 
@@ -65,37 +64,8 @@
         <button>Paypal</button>
         <div class="col-md-4"><input type="button" id="btnPrint" onclick="jsPrintAll()" value="Print" /></div>
 
-        <!--       
+         
         
-        <!--        <script src="script/datepicker.js"></script>-->
-        <script>
-            function jsPrintAll() {
-                setTimeout(function () {
-                    window.print();
-                }, 500);
-            }
-            $(document).ready(function () {
-
-                $(function () {
-                    $("#datepicker").datepicker({format: 'dd-mm-yyyy'});
-//                    $("#datepicker").datepicker("setDate", 'this.value');//date of discharged
-                    $("input[type=button]").datepicker({format: 'dd-mm-yyyy', autoclose: true, startDate: new Date()}).on("change", function () {
-                        var start = $('#datepicker').datepicker('getDate');
-                        var end = $('#datepicker1').datepicker('getDate');
-                        var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
-//                        if (days <= 0) {
-//                            $("#showDiff").val(0 + " * 40$ = " + (0 * 40));
-//                        } else {
-//                            $("#showDiff").val(days + " * 40$ = " + (days * 40));
-//                        }
-                        if (days <= 0) {
-                            $("input[type=text]").val(0 + " * 40$ = " + (0 * 40));
-                        } else {
-                            $("input[type=text]").val(days + " * 40$ = " + (days * 40));
-                        }
-                    });
-                });
-            });
-        </script>
+                <script src="script/datepicker.js"></script>       
     </body>
 </html>

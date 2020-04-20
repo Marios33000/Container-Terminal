@@ -44,23 +44,24 @@
             <div>   ${container.getType()} ==>  ${prices.get(count).getTotal()}$</div>
 
             <div class="row" style="padding-top: 1%;">
-                <div class="col-sm-2"><input class="datepicker" type="button" class="form-control form-control text-center" disabled="true">
+                <div class="col-sm-2"><input id="datepicker" type="date" format="dd-mm-yyyy" class="form-control form-control text-center" value="${container.getDate()}" disabled="true">
                     <i class="fas fa-calendar"></i>           
                 </div>
-                <div class="col-sm-2"><input class="datepicker1" type="button" class="form-control form-control text-center">
+                <div class="col-sm-2"><input id="datepicker1" type="button" class="form-control form-control text-center">
                     <i class="fas fa-calendar"></i>           
                 </div>
                 <div class="col-sm-2">
-                    <input type="text" id="dateDiff" disabled>
+<!--                    <input type="text" id="${count}" disabled>-->
+                    <input type="text" id="showDiff" disabled>
                 </div>
             </div>
+
 
             <br>
 
             <c:set var="count" value="${count+1}" scope="page"/>  
         </c:forEach>
-        ${prices}
-
+        ${prices}      
         <button>Paypal</button>
         <div class="col-md-4"><input type="button" id="btnPrint" onclick="jsPrintAll()" value="Print" /></div>
 
@@ -75,23 +76,20 @@
             }
             $(document).ready(function () {
 
-            <c:forEach items="${container}" var="containers">
-                function () {
-                    $(".datepicker").datepicker({format: 'dd-mm-yyyy'});
-                    $("#datepicker").datepicker("setDate", "${container.getDate()}");//date of discharged
-                    $(".datepicker1").datepicker({format: 'dd-mm-yyyy', autoclose: true, startDate: new Date()}).on("change", function () {
-                        var start = $('.datepicker').datepicker('getDate');
-                        var end = $('.datepicker1').datepicker('getDate');
+                $(function () {
+                    $("#datepicker").datepicker({format: 'dd-mm-yyyy'});
+//                    $("#datepicker").datepicker("setDate", 'this.value');//date of discharged
+                    $("input[type=button]").datepicker({format: 'dd-mm-yyyy', autoclose: true, startDate: new Date()}).on("change", function () {
+                        var start = $('#datepicker').datepicker('getDate');
+                        var end = $('#datepicker1').datepicker('getDate');
                         var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
                         if (days <= 0) {
-                            $("#dateDiff").val(0 + " * 40$ = " + (0 * 40));
+                            $("#showDiff").val(0 + " * 40$ = " + (0 * 40));
                         } else {
-                            $("#dateDiff").val(days + " * 40$ = " + (days * 40));
+                            $("#showDiff").val(days + " * 40$ = " + (days * 40));
                         }
                     });
-                }
-                ;
-            </c:forEach>
+                });
             });
         </script>
     </body>

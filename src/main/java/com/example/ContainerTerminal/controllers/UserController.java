@@ -141,7 +141,7 @@ public class UserController {
         }
 
         mm.addAttribute("prices", prices);
-        return "paymentDetails";
+        return "paymentDetails1";
 
     }
 

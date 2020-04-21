@@ -36,12 +36,6 @@ public class UserController {
         return "loginPage";
     }
     
-    @GetMapping("/WEB-INF/jsp/Payment.jsp")
-    public String start1() {
-
-        return "Payment";
-    }
-
 //    @GetMapping("/")
 //    public String start() {
 //
@@ -142,6 +136,54 @@ public class UserController {
 //}
         mm.addAttribute("prices", prices);
         return "paymentDetails1";
+
+    }
+    
+    @GetMapping("/payment1")
+    public String goToPaymentDetails1(ModelMap mm, HttpSession session) {
+
+        List<PriceDao> prices = new ArrayList<>();
+        List<Container> containers = (List<Container>) session.getAttribute("containers");
+
+        for (int i = 0; i < containers.size(); i++) {
+            int totalCounter = 0;
+            PriceDao pd = new PriceDao();
+
+            String string = containers.get(i).getType();
+            String[] parts = string.split(" ");
+            String part1 = parts[0]; // 20
+            String part2 = parts[1]; // C
+
+            if ("20".equals(part1)) {
+                pd.setWeight(33);
+                totalCounter += 33;
+            } else {
+                pd.setWeight(43);
+                totalCounter += 43;
+            }
+
+            if ("N".equals(part2)) {
+                pd.setType(5);
+                totalCounter += 5;
+            } else if ("C".equals(part2)) {
+
+                pd.setType(20);
+                totalCounter += 20;
+            } else {
+                pd.setType(50);
+                totalCounter += 50;
+            }         
+
+            pd.setTotal(totalCounter);
+            prices.add(pd);
+        }
+
+//   mm.addAttribute("prices",prices);
+//    return "Payment";
+//   
+//}
+        mm.addAttribute("prices", prices);
+        return "Payment";
 
     }
 

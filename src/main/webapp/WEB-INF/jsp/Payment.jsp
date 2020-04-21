@@ -113,6 +113,9 @@
                     <button type="button" class="btn btn-success btn-lg btn-block">
                         Pay Now <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
+                    <button type="button" href="/search" class="btn btn-success btn-lg btn-block">
+                        Back<span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
                 </div>
             </div>
         </div>

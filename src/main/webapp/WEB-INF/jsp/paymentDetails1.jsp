@@ -21,7 +21,7 @@
           rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-<!--    <link rel="stylesheet" href="css/datepicker.css">-->
+    <!--    <link rel="stylesheet" href="css/datepicker.css">-->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
@@ -63,9 +63,11 @@
         ${prices}      
         <button>Paypal</button>
         <div class="col-md-4"><input type="button" id="btnPrint" onclick="jsPrintAll()" value="Print" /></div>
+        <button type="button" href="/search" class="btn btn-success btn-lg btn-block">
+            Back<span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
 
-         
-        
-                <script src="script/datepicker.js"></script>       
+
+        <script src="script/datepicker.js"></script>       
     </body>
 </html>

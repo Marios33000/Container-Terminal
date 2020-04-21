@@ -56,6 +56,6 @@
  
  </table> 
         <a href="/payment">Pay</a>
-  
+        <a href="/payment1">Payment</a>
     </body>
 </html>

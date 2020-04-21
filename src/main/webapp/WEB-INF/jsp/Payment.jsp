@@ -73,7 +73,7 @@
                                 <td class="col-md-2 text-center" style="font-size: 90%"><input id="datepicker${loop.index}" type="text" style="width:70%; background-color: transparent; border: none" format="dd-mm-yyyy" value="${container.getDate()}" disabled="true"></td>
                                 <td class="col-md-2" style="font-size: 90%"><input id="datepicker1${loop.index}" type="button" onchange="allagi('${loop.index}')" style="width:70%; background-color: lightgray; border: none"></td>
                                 <td class="col-md-2" style="font-size: 90%"><input type="text" id="showDiff${loop.index}" style="width:70%; background-color: transparent; border: none" disabled></td>
-                                <td class="col-md-1" style="font-size: 90%">$${prices.get(count).getTotal()}</td>
+                                <td class="col-md-1" style="font-size: 90%">$<input id="type${loop.index}" type="text" style="width:70%; background-color: transparent; border: none" value="${prices.get(count).getTotal()}" disabled="true"></td>
                                 <td class="col-md-1 text-center" style="font-size: 90%"><input type="text" id="showAmount${loop.index}" style="width:70%; background-color: transparent; border: none" disabled></td>
                             </tr>
                            
@@ -83,11 +83,11 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>                               
-                                <td></td>                               
+                                <td><button id="commitBTN" class="btn btn-success" onclick="commitHandle('${count}')">Commit</button></td>                               
                                 <td></td>
                                 <td class="text-right">
                                     <p>
-                                        <strong>Subtotal: </strong>
+                                        <strong>Subtotal: </strong>
                                     </p>
                                     <p>
                                         <strong>Tax: </strong>
@@ -103,7 +103,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td><c:out value="${count}"/></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -129,7 +129,8 @@
                         
                              
  
-          <script src="script/datepicker.js"></script>              
+          <script src="script/datepicker.js"></script> 
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
                         
     </body>
 

@@ -35,6 +35,12 @@ public class UserController {
 
         return "loginPage";
     }
+    
+    @GetMapping("/WEB-INF/jsp/Payment.jsp")
+    public String start1() {
+
+        return "Payment";
+    }
 
 //    @GetMapping("/")
 //    public String start() {

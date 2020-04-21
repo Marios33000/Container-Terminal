@@ -27,8 +27,9 @@ function allagi(index) {
     var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
     console.log(days);
     if (days <= 0) {
-        $("#showDiff" + index).val(0 + " * 40$ = " + (0 * 40));
+        $("#showDiff" + index).val("(0 days) $" + (0 * 8));
     } else {
-        $("#showDiff" + index).val(days + " * 40$ = " + (days * 40));
+        $("#showDiff" + index).val("("+days + " days) $" + (days * 8));
     }
+    
 }

@@ -31,8 +31,6 @@
 
                         <strong>${user.username}</strong>
                         <br>
-
-
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                         <p>
@@ -54,8 +52,7 @@
                         <thead>
                             <tr>
                                 <th>Container Name</th>
-                                <th>Type</th>
-                             
+                                <th>Type</th>                             
                                 <th>Discharged</th>
                                 <th>Amount</th>
                             </tr>
@@ -73,10 +70,7 @@
                            
                              <c:set var="count" value="${count+1}" scope="page"/>  
                              </c:forEach>
-                            
-                            
-                            
-                           <tr>
+                            <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -112,10 +106,7 @@
                     </table>
                     <button type="button" class="btn btn-success btn-lg btn-block">
                         Pay Now <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                    <button type="button" href="/search" class="btn btn-success btn-lg btn-block">
-                        Back<span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
+                    </button>                    
                 </div>
             </div>
         </div>

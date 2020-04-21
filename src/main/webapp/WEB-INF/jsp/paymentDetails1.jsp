@@ -63,9 +63,7 @@
         ${prices}      
         <button>Paypal</button>
         <div class="col-md-4"><input type="button" id="btnPrint" onclick="jsPrintAll()" value="Print" /></div>
-        <button type="button" href="/search" class="btn btn-success btn-lg btn-block">
-            Back<span class="glyphicon glyphicon-chevron-right"></span>
-        </button>
+       
 
 
         <script src="script/datepicker.js"></script>       

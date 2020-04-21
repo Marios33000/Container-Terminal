@@ -26,41 +26,52 @@ public class UserController {
 
     @Autowired
     ContainerInterface containerinterface;
-    
+
     @Autowired
     SeaWayBillInterface seawaybillinterface;
 
     @GetMapping("/")
     public String start() {
-        
+
         return "loginPage";
     }
-
- 
-
+    
+//    @GetMapping("/")
+//    public String start() {
+//
+//        return "loginPage";}
+//    public String start(){
+//    
+//    return "loginPage";
+//    }
+//    @GetMapping("/forgotPage.jsp")
+//    public String forgotPass(){
+//    
+//    return "forgotPass";
+//    }
     @PostMapping("/submitlogin")
     public String login(@RequestParam(name = "fname") String username,
             @RequestParam(name = "pas") String password, ModelMap mm, HttpSession session
     ) {
         User u = userinterface.findByUsername(username);
         if (u == null) {
-                      mm.addAttribute("message", "To username einai lathos");
-            return "loginPage" ;
+            mm.addAttribute("message", "To username einai lathos");
+            return "loginPage";
 
         } else {
             if (password.equals(u.getPassword())) {
                 session.setAttribute("user", u);
                 return "welcome";
             } else {
-             mm.addAttribute("message", "To password einai lathos");
+                mm.addAttribute("message", "To password einai lathos");
                 return "loginPage";
             }
         }
     }
 
     @PostMapping("/search")
-    public String searchOrderNumber(@RequestParam(name = "search") String order, ModelMap mm,HttpSession session) {
-       
+    public String searchOrderNumber(@RequestParam(name = "search") String order, ModelMap mm, HttpSession session) {
+
         List<Container> all = containerinterface.getAllContainers();
         List<Container> containers = new ArrayList<>();
         boolean exists = false;
@@ -68,119 +79,137 @@ public class UserController {
             if (order.equals(all.get(i).getOrdernumber().getBookingnumber())) {
 
                 containers.add(all.get(i));
-          exists = true;
-         }
+                exists = true;
+            }
         }
         if (exists == true) {
             session.setAttribute("containers", containers);
             mm.addAttribute("containers", containers);
             return "c_table";
         } else {
-      return "c_table";
-     }
+            return "userPage";
+        }
     }
-    
-    
+
     @GetMapping("/payment")
-public String goToPaymentDetails(ModelMap mm,HttpSession session){
-   
- List<PriceDao> prices=new ArrayList<>();
-  List<Container> containers=(List<Container>) session.getAttribute("containers");
-  
-        for (int i = 0; i <containers.size() ; i++) {
-            int totalCounter=0;
-        PriceDao pd=new PriceDao();
-      
-        String string = containers.get(i).getType();
-String[] parts = string.split("-");
-String part1 = parts[0]; // 20
-String part2 = parts[1]; // C
-      
+    public String goToPaymentDetails(ModelMap mm, HttpSession session) {
+
+        List<PriceDao> prices = new ArrayList<>();
+        List<Container> containers = (List<Container>) session.getAttribute("containers");
+
+        for (int i = 0; i < containers.size(); i++) {
+            int totalCounter = 0;
+            PriceDao pd = new PriceDao();
+
+            String string = containers.get(i).getType();
+            String[] parts = string.split(" ");
+            String part1 = parts[0]; // 20
+            String part2 = parts[1]; // C
+
             if ("20".equals(part1)) {
-              pd.setWeight(33);
-              totalCounter+=33; 
+                pd.setWeight(33);
+                totalCounter += 33;
+            } else {
+                pd.setWeight(43);
+                totalCounter += 43;
             }
-            else{
-                 pd.setWeight(43);
-              totalCounter+=43; 
-            }
-           
+
             if ("N".equals(part2)) {
                 pd.setType(5);
-                totalCounter+=5;
-            }
-            else if ("C".equals(part2)) {
-            
-            pd.setType(20);
-                totalCounter+=20;
-            }            
-            else{
-            pd.setType(50);
-                totalCounter+=50;
-            }
-            
-            totalCounter+=20;
+                totalCounter += 5;
+            } else if ("C".equals(part2)) {
+
+                pd.setType(20);
+                totalCounter += 20;
+            } else {
+                pd.setType(50);
+                totalCounter += 50;
+            }         
+
             pd.setTotal(totalCounter);
             prices.add(pd);
         }
-   
-   mm.addAttribute("prices",prices);
-    return "Payment";
-   
-}
 
+//   mm.addAttribute("prices",prices);
+//    return "Payment";
+//   
+//}
+        mm.addAttribute("prices", prices);
+        return "paymentDetails1";
 
-
-
-
-
-
-
-
-@GetMapping("/history")
-public String getHistoryOfUser(ModelMap mm,HttpSession session){
-
-   User u=(User) session.getAttribute("user");
-   
-   List<Seawaybill> all=new ArrayList<>() ;
-    
-   for (int i = 0; i < seawaybillinterface.getAll().size(); i++) {
-        if (Objects.equals(seawaybillinterface.getAll().get(i).getUserid().getUserid(), u.getUserid()))
-        {
-            all.add(seawaybillinterface.getAll().get(i));
-        }
-   
     }
-   
-   
+    
+    @GetMapping("/payment1")
+    public String goToPaymentDetails1(ModelMap mm, HttpSession session) {
+
+        List<PriceDao> prices = new ArrayList<>();
+        List<Container> containers = (List<Container>) session.getAttribute("containers");
+
+        for (int i = 0; i < containers.size(); i++) {
+            int totalCounter = 0;
+            PriceDao pd = new PriceDao();
+
+            String string = containers.get(i).getType();
+            String[] parts = string.split(" ");
+            String part1 = parts[0]; // 20
+            String part2 = parts[1]; // C
+
+            if ("20".equals(part1)) {
+                pd.setWeight(33);
+                totalCounter += 33;
+            } else {
+                pd.setWeight(43);
+                totalCounter += 43;
+            }
+
+            if ("N".equals(part2)) {
+                pd.setType(5);
+                totalCounter += 5;
+            } else if ("C".equals(part2)) {
+
+                pd.setType(20);
+                totalCounter += 20;
+            } else {
+                pd.setType(50);
+                totalCounter += 50;
+            }         
+
+            pd.setTotal(totalCounter);
+            prices.add(pd);
+        }
+
+//   mm.addAttribute("prices",prices);
+//    return "Payment";
+//   
+//}
+        mm.addAttribute("prices", prices);
+        return "Payment";
+
+    }
+
+    @GetMapping("/history")
+    public String getHistoryOfUser(ModelMap mm, HttpSession session) {
+
+        User u = (User) session.getAttribute("user");
+
+        List<Seawaybill> all = new ArrayList<>();
+
+        for (int i = 0; i < seawaybillinterface.getAll().size(); i++) {
+            if (Objects.equals(seawaybillinterface.getAll().get(i).getUserid().getUserid(), u.getUserid())) {
+                all.add(seawaybillinterface.getAll().get(i));
+            }
+
+        }
+
 //   all.get(0).getBookingnumber()
 //   all.get(0).getCustom()
 //   all.get(0).getPaid()
-  
 //    for (Seawaybill seawaybill : all) {
 //        seawaybill.getBookingnumber()
 //    }
 //   
-       
-   mm.addAttribute("kappa",all);
-   
-return "wb_table";
+        mm.addAttribute("kappa", all);
+
+        return "wb_table";
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- }

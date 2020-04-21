@@ -1,0 +1,26 @@
+*  
+  #datepicker, #datepicker1{
+      position: relative;      
+  }
+  .container{
+      margin-top: 10px;
+      width:1000px      
+  }
+ #datepicker, #datepicker1, #dateDiff{
+   background-color: transparent;
+   border: 2px solid black;   
+   margin-left: 5%;  
+ } 
+ .fa-calendar{
+   color: black;
+   float: left;
+   margin-top: -12%;
+   margin-left: 10%;
+ }
+ #dateDiff{
+     text-align: center;
+     width: 100%;
+     display: block;
+     height: 100%;
+ }
+

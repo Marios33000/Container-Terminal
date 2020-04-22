@@ -71,8 +71,8 @@
                                         <td class="col-md-3" style="font-size: 96%"><em>${container.getContainername()} </em></td>
                                         <td class="col-md-1" style="font-size: 90%">${container.getType()}</td>
                                         <td class="col-md-2 text-center" style="font-size: 90%"><input id="datepicker${loop.index}" type="text" style="width:70%; background-color: transparent; border: none" format="dd-mm-yyyy" value="${container.getDate()}" disabled="true"></td>
-        <!--                                <td class="col-md-2" style="font-size: 90%"><input id="datepicker1" type="button" onchange="allagi('')" style="width:70%; background-color: lightgray; border: none"></td>-->
-                                        <td class="col-md-2" style="font-size: 90%"><input class="selected" data-selected="${loop.index}" id="datepicker1${loop.index}" type="button" style="width:70%; background-color: lightgray; border: none"></td>
+                                        <td class="col-md-2" style="font-size: 90%"><input id="datepicker1${loop.index}" type="button" onchange="allagi('${loop.index}')" style="width:70%; background-color: lightgray; border: none"></td>
+                                        <!--<td class="col-md-2" style="font-size: 90%"><input class="selected" id="datepicker1${loop.index}" type="button" style="width:70%; background-color: lightgray; border: none"></td>-->
                                         <td class="col-md-2" style="font-size: 90%"><input type="text" id="showDiff${loop.index}" style="width:70%; background-color: transparent; border: none" disabled></td>
                                         <td class="col-md-1" style="font-size: 90%">$<input id="type${loop.index}" type="text" style="width:70%; background-color: transparent; border: none" value="${prices.get(count).getTotal()}" disabled="true"></td>
                                         <td class="col-md-1" style="font-size: 90%"><input type="text" id="showAmount${loop.index}" style="width:70%; background-color: transparent; border: none" value="undefined" disabled></td>

@@ -1,11 +1,27 @@
 $(document).ready(function () {
     $("input[type=button]").datepicker({format: 'yyyy-mm-dd', autoclose: true, startDate: new Date()});
+//    $(".selected").each((index) => {
+//        $(this).on("change", () => {
+//            console.log(index);
+//            var start = parseDate($("#datepicker" + index).val());
+//            var end = parseDate($("#datepicker1" + index).val());
+//            console.log($("#datepicker1" + index).val());
+//            var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
+//            var fee = days * 8;
+//            if (days <= 0) {
+//                $("#showDiff" + index).val("(0 days) $" + (0 * 8));
+//            } else {
+//                $("#showDiff" + index).val("(" + days + " days) $" + fee);
+//            }
+//            $("#showAmount" + index).val("$" + (fee + parseInt($("#type" + index).val())));
+//        });
+//    });
     $('#commitBTN').on('click', () => {
         var index = $("#countIndex").val();
-        for (var i = 0; i <= index; i++) {
+        for (var i = 0; i < index; i++) {
             console.log($("#datepicker1" + index).val());
         }
-        for (var i = 0; i <= index; i++) {
+        for (var i = 0; i < index; i++) {
             var checkValue = $("#datepicker1" + index).val();
             if (checkValue !== undefined) {
                 swal({
@@ -19,7 +35,7 @@ $(document).ready(function () {
                             icon: "success"
                         }).then(function () {
                             var index = $("#countIndex").val();
-                            for (var i = 0; i <= index; i++) {
+                            for (var i = 0; i < index; i++) {
                                 $("#datepicker1" + i).prop("disabled", true);
                             }
                             $("#commitBTN").prop("disabled", true);
@@ -45,45 +61,32 @@ $(document).ready(function () {
         }, 500);
     });
 
-    $(".selected").on("click", (index) => {
-            var start = parseDate($("#datepicker" + index).val());
-            var end = parseDate($("#datepicker1" + index).val());
-            console.log($("#datepicker1" + (index - 1)).val());
-            var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
-            var fee = days * 8;
-            if (days <= 0) {
-                $("#showDiff" + index).val("(0 days) $" + (0 * 8));
-            } else {
-                $("#showDiff" + index).val("(" + days + " days) $" + fee);
-            }
-            $("#showAmount" + index).val("$" + (fee + parseInt($("#type" + index).val())));
-        });
-  
     
-    function parseDate(input) {
-        var parts = input.split("-");
-        var date = new Date(parts[0], parts[1] - 1, parts[2]);
-        return date;
-    }
+
+//    function parseDate(input) {
+//        var parts = input.split("-");
+//        var date = new Date(parts[0], parts[1] - 1, parts[2]);
+//        return date;
+//    }
+
 
 });
 
-//function parseDate(input) {
-//    var parts = input.split("-");
-//    var date = new Date(parts[0], parts[1] - 1, parts[2]);
-//    return date;
-//}
+function parseDate(input) {
+    var parts = input.split("-");
+    var date = new Date(parts[0], parts[1] - 1, parts[2]);
+    return date;
+}
 
-//function allagi(index) {
-//    var start = parseDate($("#datepicker" + index).val());
-//    var end = parseDate($("#datepicker1" + index).val());
-//    console.log($("#datepicker1" + (index - 1)).val());
-//    var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
-//    var fee = days * 8;
-//    if (days <= 0) {
-//        $("#showDiff" + index).val("(0 days) $" + (0 * 8));
-//    } else {
-//        $("#showDiff" + index).val("(" + days + " days) $" + fee);
-//    }
-//    $("#showAmount" + index).val("$" + (fee + parseInt($("#type" + index).val())));
-//}
+function allagi(index) {
+    var start = parseDate($("#datepicker" + index).val());
+    var end = parseDate($("#datepicker1" + index).val());    
+    var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
+    var fee = days * 8;
+    if (days <= 0) {
+        $("#showDiff" + index).val("(0 days) $" + (0 * 8));
+    } else {
+        $("#showDiff" + index).val("(" + days + " days) $" + fee);
+    }
+    $("#showAmount" + index).val("$" + (fee + parseInt($("#type" + index).val())));
+}

@@ -1,29 +1,34 @@
 $(document).ready(function () {
     $("#datepicker").datepicker({format: 'dd-mm-yyyy'});
     $("input[type=button]").datepicker({format: 'yyyy-mm-dd', autoclose: true, startDate: new Date()});
-});
-
-$(document).ready(function () {
     $('#commitBTN').on('click', () => {
-        Swal.fire({
-            title: "<i>Demo</i>",
-            html: "Username: Perilee, Password: Cb9javaPT",
-            showCancelButton: true,
-            cancelButtonText: "Cancel",
-            confirmButtonText: "ok"
-        }).then(function (index) {
-            for (var i = 0; i <= index; i++) {
-        $("#datepicker1" + i).prop("disabled", true);
-    }
+        swal({
+            title: "<i>Caution</i>",
+            text: "Are you sure?",
+            buttons: true,
+            icon: "warning"
+        }).then((willCommit) => {
+            if (willCommit) {
+                swal("Committed Successfully!!", {
+                    icon: "success"
+                }).then(function () {
+                    var index = $("#countIndex").val();
+                    for (var i = 0; i <= index; i++) {
+                        $("#datepicker1" + i).prop("disabled", true);
+                    }
+                    $("#commitBTN").prop("disabled", true);
+                });
+            } else {
+                swal("Retype your dates.")
+            }
         });
     });
-});
-
-function jsPrintAll() {
-    setTimeout(function () {
+    $("#printPay").on("click",() =>{
+        setTimeout(function () {
         window.print();
     }, 500);
-}
+    });
+});
 
 function parseDate(input) {
     var parts = input.split("-");
@@ -50,14 +55,14 @@ function allagi(index) {
 }
 
 function subtotal(index) {
-    //na upologiso to subtotal
+//na upologiso to subtotal
 }
 
 //function commitHandle(index) {
 //    for (var i = 0; i <= index; i++) {
 //        $("#datepicker1" + i).prop("disabled", true);
 //    }
-//na valo edo to sweetalert
+////na valo edo to sweetalert
 //
 //
 //}

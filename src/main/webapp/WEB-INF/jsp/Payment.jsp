@@ -83,7 +83,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>                               
-                                <td><button id="commitBTN" class="btn btn-success" onclick="commitHandle('${count}')">Commit</button></td>                               
+                                <td><button id="commitBTN" class="btn btn-success">Commit</button></td>                               
                                 <td></td>
                                 <td class="text-right">
                                     <p>
@@ -104,7 +104,7 @@
                             </tr>
                             <tr>
                                 <td><c:out value="${count}"/></td>
-                                <td></td>
+                                <td><input id="countIndex" value="${count}" hidden>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -117,8 +117,8 @@
                             </tr>
                         </tbody>
                     </table>
-                        <button type="button" class="btn btn-success btn-lg btn-block">Submit</button>
-                    <button type="button" class="btn btn-success btn-lg btn-block">
+                        <button id="printPay" class="btn btn-success btn-lg btn-block">Print</button>
+                    <button class="btn btn-success btn-lg btn-block">
                         Pay Now <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>                    
                 </div>
@@ -130,7 +130,7 @@
                              
  
           <script src="script/datepicker.js"></script> 
-          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+          <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                         
     </body>
 

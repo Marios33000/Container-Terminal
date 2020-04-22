@@ -1,68 +1,89 @@
 $(document).ready(function () {
-    $("#datepicker").datepicker({format: 'dd-mm-yyyy'});
     $("input[type=button]").datepicker({format: 'yyyy-mm-dd', autoclose: true, startDate: new Date()});
     $('#commitBTN').on('click', () => {
-        swal({
-            title: "<i>Caution</i>",
-            text: "Are you sure?",
-            buttons: true,
-            icon: "warning"
-        }).then((willCommit) => {
-            if (willCommit) {
-                swal("Committed Successfully!!", {
-                    icon: "success"
-                }).then(function () {
-                    var index = $("#countIndex").val();
-                    for (var i = 0; i <= index; i++) {
-                        $("#datepicker1" + i).prop("disabled", true);
+        var index = $("#countIndex").val();
+        for (var i = 0; i <= index; i++) {
+            console.log($("#datepicker1" + index).val());
+        }
+        for (var i = 0; i <= index; i++) {
+            var checkValue = $("#datepicker1" + index).val();
+            if (checkValue !== undefined) {
+                swal({
+                    title: "Caution",
+                    text: "Are you sure?",
+                    buttons: true,
+                    icon: "warning"
+                }).then((willCommit) => {
+                    if (willCommit) {
+                        swal("Committed Successfully!!", {
+                            icon: "success"
+                        }).then(function () {
+                            var index = $("#countIndex").val();
+                            for (var i = 0; i <= index; i++) {
+                                $("#datepicker1" + i).prop("disabled", true);
+                            }
+                            $("#commitBTN").prop("disabled", true);
+                            $("#paymentBTN").prop("disabled", false);
+
+                        });
+                    } else {
+                        swal("Retype your dates.")
                     }
-                    $("#commitBTN").prop("disabled", true);
                 });
             } else {
-                swal("Retype your dates.")
+                swal({
+                    title: "Caution",
+                    text: "Please complete all 'Paid Date' fields",
+                    icon: "warning"
+                });
             }
-        });
+        }
     });
-    $("#printPay").on("click",() =>{
+    $("#printPay").on("click", () => {
         setTimeout(function () {
-        window.print();
-    }, 500);
+            window.print();
+        }, 500);
     });
+
+    $(".selected").on("click", (index) => {
+            var start = parseDate($("#datepicker" + index).val());
+            var end = parseDate($("#datepicker1" + index).val());
+            console.log($("#datepicker1" + (index - 1)).val());
+            var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
+            var fee = days * 8;
+            if (days <= 0) {
+                $("#showDiff" + index).val("(0 days) $" + (0 * 8));
+            } else {
+                $("#showDiff" + index).val("(" + days + " days) $" + fee);
+            }
+            $("#showAmount" + index).val("$" + (fee + parseInt($("#type" + index).val())));
+        });
+  
+    
+    function parseDate(input) {
+        var parts = input.split("-");
+        var date = new Date(parts[0], parts[1] - 1, parts[2]);
+        return date;
+    }
+
 });
 
-function parseDate(input) {
-    var parts = input.split("-");
-    var date = new Date(parts[0], parts[1] - 1, parts[2]);
-    return date;
-}
+//function parseDate(input) {
+//    var parts = input.split("-");
+//    var date = new Date(parts[0], parts[1] - 1, parts[2]);
+//    return date;
+//}
 
-function allagi(index) {
-    console.log($("#datepicker" + index).val());
-    var start = parseDate($("#datepicker" + index).val());
-    console.log(start);
-    console.log($("#datepicker1" + index).val());
-    var end = parseDate($("#datepicker1" + index).val());
-    console.log(end);
-    var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
-    var fee = days * 8;
-    console.log(days);
-    if (days <= 0) {
-        $("#showDiff" + index).val("(0 days) $" + (0 * 8));
-    } else {
-        $("#showDiff" + index).val("(" + days + " days) $" + fee);
-    }
-    $("#showAmount" + index).val("$" + (fee + parseInt($("#type" + index).val())));
-}
-
-function subtotal(index) {
-//na upologiso to subtotal
-}
-
-//function commitHandle(index) {
-//    for (var i = 0; i <= index; i++) {
-//        $("#datepicker1" + i).prop("disabled", true);
+//function allagi(index) {
+//    var start = parseDate($("#datepicker" + index).val());
+//    var end = parseDate($("#datepicker1" + index).val());
+//    console.log($("#datepicker1" + (index - 1)).val());
+//    var days = (Math.ceil((end - start) / (1000 * 60 * 60 * 24))) - 1;
+//    var fee = days * 8;
+//    if (days <= 0) {
+//        $("#showDiff" + index).val("(0 days) $" + (0 * 8));
+//    } else {
+//        $("#showDiff" + index).val("(" + days + " days) $" + fee);
 //    }
-////na valo edo to sweetalert
-//
-//
+//    $("#showAmount" + index).val("$" + (fee + parseInt($("#type" + index).val())));
 //}

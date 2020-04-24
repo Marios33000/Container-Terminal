@@ -16,8 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedNativeQueries;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -32,7 +30,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mario
  */
 @Entity
-
 @Table(name = "seawaybill")
 @XmlRootElement
 @NamedQueries({
@@ -57,7 +54,7 @@ public class Seawaybill implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "custom")
-    private short custom;
+    private Integer custom;
     @Basic(optional = false)
     @NotNull
     @Column(name = "paid")
@@ -75,7 +72,7 @@ public class Seawaybill implements Serializable {
         this.id = id;
     }
 
-    public Seawaybill(Integer id, String bookingnumber, short custom, short paid) {
+    public Seawaybill(Integer id, String bookingnumber, Integer custom, short paid) {
         this.id = id;
         this.bookingnumber = bookingnumber;
         this.custom = custom;
@@ -98,11 +95,11 @@ public class Seawaybill implements Serializable {
         this.bookingnumber = bookingnumber;
     }
 
-    public short getCustom() {
+    public Integer getCustom() {
         return custom;
     }
 
-    public void setCustom(short custom) {
+    public void setCustom(Integer custom) {
         this.custom = custom;
     }
 

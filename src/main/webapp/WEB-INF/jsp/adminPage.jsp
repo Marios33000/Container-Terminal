@@ -30,14 +30,12 @@
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
                             <ul class="list-group">
                                 <a href="#" class="list-group-item active">
-                                    <br/><br/><i class="glyphicon glyphicon-user"></i> User<br/><br/>
+                                    <br/><br/><i class="glyphicon glyphicon-user"></i> Admin<br/><br/>
                                 </a>
                                 <a href="#" class="list-group-item ">
                                     <br/><br/><i class="glyphicon glyphicon-tasks"></i> Waybills<br/><br/>
                                 </a>  
-                                <a href="#" class="list-group-item ">
-                                    <br/><br/><i class="glyphicon glyphicon-search"></i> Search Booking Number<br/><br/>
-                                </a>
+                            
                                 <a href="#" class="list-group-item">
                                     <br/><br/><h4 class="glyphicon glyphicon-log-out"></h4> Logout<br/><br/>
                                 </a>
@@ -58,28 +56,14 @@
 
                             <div class="bhoechie-tab-content">
                                 <center>
-                                    <h3 style="margin-top: 0;color:#00001a">My Waybills</h3>
+                                    <h3 style="margin-top: 0;color:#00001a">All Waybills</h3>
                                     <br>
                                     <h1 class="glyphicon glyphicon-list-alt" style="font-size:12em;color:#00001a"></h1>
-                                    <h2 style="margin-top: 0;color:#00001a;margin:20px;"><a href="/history" class="btn btn-sm btn-primary btn-block" role="button">History</a></h2>
+                                    <h2 style="margin-top: 0;color:#00001a;margin:20px;"><a href="/seeAllWaybills" class="btn btn-sm btn-primary btn-block" role="button">History</a></h2>
 
                                 </center>
                             </div>
 
-
-                            <div class="bhoechie-tab-content">
-                                <center>
-                                    <h3 style="margin-top: 0;color:#00001a">Booking Number</h3>
-                                    <h1 class="glyphicon glyphicon-file" style="font-size:12em;color:#00001a"></h1>
-                                    <nav class="navbar navbar-light bg-light">
-                                        <form class="form-inline" method="post" action="/search">
-                                            <input class="form-control form-control-lg" type="search" name="search" placeholder="Booking Number" aria-label="Search">
-                                            <button class="btn btn-primary" type="submit" >Search</button>
-                                        </form>
-                                        
-                                    </nav>
-                                </center>
-                            </div>
 
                             <div class="bhoechie-tab-content">
                                 <center>

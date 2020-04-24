@@ -6,7 +6,6 @@
 package com.example.ContainerTerminal.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -58,8 +57,8 @@ public class Container implements Serializable {
     @Column(name = "type")
     private String type;
     @Column(name = "date")
-    //@Temporal(TemporalType.TIMESTAMP)
-    private LocalDate date;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
     @Basic(optional = false)
     @NotNull
     @Column(name = "discharged")
@@ -106,11 +105,11 @@ public class Container implements Serializable {
         this.type = type;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

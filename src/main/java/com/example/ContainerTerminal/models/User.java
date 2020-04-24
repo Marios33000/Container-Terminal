@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -73,6 +75,9 @@ public class User implements Serializable {
     private String address;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userid")
     private Collection<Seawaybill> seawaybillCollection;
+    @JoinColumn(name = "roleid", referencedColumnName = "roleid")
+    @ManyToOne(optional = false)
+    private Role roleid;
 
     public User() {
     }
@@ -145,6 +150,14 @@ public class User implements Serializable {
 
     public void setSeawaybillCollection(Collection<Seawaybill> seawaybillCollection) {
         this.seawaybillCollection = seawaybillCollection;
+    }
+
+    public Role getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(Role roleid) {
+        this.roleid = roleid;
     }
 
     @Override

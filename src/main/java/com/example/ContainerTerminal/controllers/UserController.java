@@ -2,6 +2,7 @@ package com.example.ContainerTerminal.controllers;
 
 import com.example.ContainerTerminal.Daos.PriceDao;
 import com.example.ContainerTerminal.models.Container;
+import com.example.ContainerTerminal.models.Role;
 import com.example.ContainerTerminal.models.Seawaybill;
 import com.example.ContainerTerminal.models.User;
 import com.example.ContainerTerminal.services.ContainerInterface;
@@ -10,13 +11,22 @@ import com.example.ContainerTerminal.services.UserInterface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
@@ -29,13 +39,39 @@ public class UserController {
     
     @Autowired
     SeaWayBillInterface seawaybillinterface;
+    
+    @Autowired
+PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String start() {
         
+        return "index";
+    }
+
+    @GetMapping("/login")
+    public String goToLogIn() {
+        
         return "loginPage";
     }
 
+    @GetMapping("/contact")
+    public String goToContact() {
+        
+        return "contact";
+    }
+
+    @GetMapping("/about")
+    public String goToAbout() {
+        
+        return "about";
+    }
+
+    @GetMapping("/gallery")
+    public String goToGallery() {
+        
+        return "gallery";
+    }
  
 
     @PostMapping("/submitlogin")
@@ -48,9 +84,15 @@ public class UserController {
             return "loginPage" ;
 
         } else {
-            if (password.equals(u.getPassword())) {
+            if (passwordEncoder.matches(password,u.getPassword())) {
                 session.setAttribute("user", u);
-                return "welcome";
+                if (u.getRoleid().getRoleid()==1) {
+                    return "adminPage";
+                }
+                else{
+                        return "welcome";
+                }
+        
             } else {
              mm.addAttribute("message", "To password einai lathos");
                 return "loginPage";
@@ -174,13 +216,116 @@ return "wb_table";
 
 
 
+    @GetMapping(value="/goToRegister")
+    public String gotoform(ModelMap mm){
+    
+    return"registerForm";
+    }
+    
+  
+        @PostMapping(value ="/registerForm") 
+    public String submitForm(
+            @RequestParam(name="uname")String uname,
+           @RequestParam(name="pas")String pas,@RequestParam(name="afm")String afm,@RequestParam(name="doy")String doy,
+          @RequestParam(name="address")String address )
+    {
+        Role r=new Role();
+        r.setRoleid(2);
+    User u=new User();
+    u.setUsername(uname);
+    u.setAfm(afm);
+    u.setAddress(address);
+    u.setDoy(doy);
+    u.setPassword(passwordEncoder.encode(pas));
+    u.setRoleid(r);
+   userinterface.insertUser(u);
+  
+    return "index";
+    }
+    
+    
+    @GetMapping(value="/seeAllWaybills")
+  public String getAllWayBills(ModelMap mm){
+  List<Seawaybill> seaway=seawaybillinterface.getAll();
 
+  mm.addAttribute("all",seaway);
+  return "adminTable";}
+  
+ @GetMapping(value="preupdate/{id}")
+    public String preupdate(@PathVariable (name="id")Integer id,
+            ModelMap mm){
+  
+        
+      Seawaybill s=seawaybillinterface.findById(id);
+      
+     
+    mm.addAttribute("sea", s);
+      
+    return "updateForm";
+    }
 
-
-
-
-
-
-
-
- }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//     @PostMapping(value = "/updateTrainer")
+//    public String updateTrainer(@RequestParam(name = "id") Integer id,
+//            @RequestParam(name = "bn") String bn,
+//            @RequestParam(name = "custom") Integer custom,
+//            @RequestParam(name = "paid") Short paid) {
+//
+//        Seawaybill temp = new Seawaybill();
+//       temp.setId(id);
+//       temp.setBookingnumber(bn);
+//temp.setCustom(custom);
+//temp.setPaid(paid);
+//
+//        seawaybillinterface.UpdateBill(temp);
+//
+//        return "redirect:/test";
+//    }
+//
+//
+//    @PostMapping(value = "/insertTrainer")
+//    public String insertTrainer(@Valid @ModelAttribute("Trainer") Seawaybill s,
+//            BindingResult br,
+//            ModelMap mm) {
+//
+//        if (br.hasErrors()) {
+//         
+//            mm.addAttribute("trainerList", seawaybillinterface.getAll());
+//            return "test";
+//        }
+//      seawaybillinterface.UpdateBill(s);
+//        return "redirect:/test";
+//    }
+//
+//    @ResponseBody
+//    @GetMapping(value = "/preUpdateTrainerSer")
+//    public Seawaybill preUpdateTrainerSer(@RequestParam(name = "id") Integer trainerId) {
+//
+//       Seawaybill optTrainer = seawaybillinterface.findById(trainerId);
+//
+//      return optTrainer;
+//    }
+//
+//
+//
+//
+//@GetMapping(value = "/getTrainerList")
+//    public String getTrainerList(ModelMap mm) {
+//        mm.addAttribute("trainerList",seawaybillinterface.getAll());
+//        Seawaybill p = new Seawaybill();
+//        mm.addAttribute("Trainer", p);
+//        return "trainersList";
+//
+//
+// }
+}

@@ -24,5 +24,19 @@ public class SeaWBImplementation implements SeaWayBillInterface {
            
     }
 
+    @Override
+    public Seawaybill findById(Integer id) {
+
+         Seawaybill s=seaWayBill.findById(id).get();
+         return s;
+    }
+
+    @Override
+    public void UpdateBill(Seawaybill s) {
+
+       seaWayBill.save(s);
+      
+    }
+
     
 }

@@ -37,6 +37,8 @@ function allagi(index) {
     var showTaxFixed = showTax.toFixed(2);
     var showTotal = subtotal + showTax;
     var showTotalFixed = showTotal.toFixed(2);
+    localStorage.setItem("total",showTotalFixed);
+    
     $("#showSubtotal").replaceWith("<strong id='showSubtotal'>$" + subtotal + " </strong>");
     $("#showTax").replaceWith("<strong id='showTax'>$" + showTaxFixed + " </strong>");
     $("#showTotal").replaceWith("<h4><strong id='showTotal'>" + showTotalFixed + "</strong></h4>");
@@ -60,7 +62,9 @@ function commitPayment() {
                     for (var i = 0; i < index; i++) {
                         $("#datepicker1" + i).prop("disabled", true);
                     }
+                    
                     $("#commitBTN").prop("disabled", true);
+                  
                     $("#paymentBTN").prop("disabled", false);
                     $("#printPay").prop("disabled", false);                    
                 });

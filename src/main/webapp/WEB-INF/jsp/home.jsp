@@ -125,15 +125,15 @@ span.price {
                         <i class="fa fa-cc-discover" style="color:orange;"></i>
                     </div>
                     <label for="price">Total</label>
-                    <input type="text" id="price" name="price" value="10">
+                    <input type="text" id="price" name="price" >
                     <label for="currency">Currency</label>
-                    <input type="text" id="currency" name="currency" placeholder="Enter Currency">
+                    <input type="text" id="currency" name="currency" placeholder="USD" value="USD">
                     <label for="method">Payment Method</label>
-                    <input type="text" id="method" name="method" placeholder="Payment Method">
+                    <input type="text" id="method" name="method" placeholder="Paypal" value="paypal">
                     <label for="intent">Intent</label>
                     <input type="text" id="intent" name="intent" value="sale">
                     <label for="description">Payment Description</label>
-                    <input type="text" id="description" name="description" placeholder="Payment Description">
+                    <input type="text" id="description" name="description" placeholder="Payment " value="payment">
 
                 </div>
 
@@ -153,6 +153,21 @@ span.price {
         </div>-->
     </div>
 </div>
+
+<script
+  src="https://code.jquery.com/jquery-3.5.0.js"
+  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+  crossorigin="anonymous"></script>
+<script>
+    
+    $(document).ready(function(){
+       $("#price").replaceWith(" <input type='text' id='price' name='price' value='"+localStorage.getItem("total")+"' >");
+    });
+        
+    
+    
+    
+</script>
 
 </body>
 </html>

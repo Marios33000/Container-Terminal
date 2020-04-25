@@ -122,7 +122,7 @@
                         </table>
                         <button id="printPay" class="btn btn-success btn-lg btn-block" onclick="printingPage('printingArea')" disabled>Print</button>
                         <button  class="btn btn-success btn-lg btn-block" id="paymentBTN" disabled>
-                           <a  href="/goToPaypal" style="color:white">Pay now!</a>
+                            <a  href="/goToPaypal" style="color:white" id="lala" >Pay now!</a>
   <span class="glyphicon glyphicon-chevron-right"></span>
                         </button>                    
                     </div>

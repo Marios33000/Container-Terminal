@@ -199,10 +199,8 @@ public class UserController {
             if (Objects.equals(seawaybillinterface.getAll().get(i).getUserid().getUserid(), u.getUserid())) {
                 all.add(seawaybillinterface.getAll().get(i));
             }
-
         }
         mm.addAttribute("kappa", all);
-
         return "wb_table";
     }
 }

@@ -18,6 +18,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
               rel="stylesheet" type="text/css" />
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       
         <style>
             body {
                 margin-top: 20px;
@@ -29,7 +30,7 @@
     <body style="background-image:url('/images/payment.jpg');">
         <div class="container-fuid">
             <div class="row">
-                <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3" style="background-color:beige">
+                <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3"  id="printingArea" style="background-color:beige">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
 
@@ -85,11 +86,11 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>                               
-                                    <td><button id="commitBTN" class="btn btn-success">Commit</button></td>                               
+                                    <td><button id="commitBTN" class="btn btn-success" onclick="commitPayment()">Commit</button></td>                               
                                     <td></td>
                                     <td class="text-right">
                                         <p>
-                                            <strong>Subtotal: </strong>
+                                            <strong >Subtotal: </strong>
                                         </p>
                                         <p>
                                             <strong>Tax: </strong>
@@ -97,15 +98,15 @@
                                     </td>
                                     <td class="text-center">
                                         <p>
-                                            <strong id="subtotal">$0.00</strong>
+                                            <strong id="showSubtotal">$0.00</strong>
                                         </p>
                                         <p>
-                                            <strong id="tax">$0.00</strong>
+                                            <strong id="showTax">$0.00</strong>
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><c:out value="${count}"/></td>
+                                    <td></td>
                                     <td><input id="countIndex" value="${count}" hidden>
                                     <td></td>
                                     <td></td>
@@ -114,12 +115,12 @@
                                         <h4><strong>Total:</strong></h4>
                                     </td>
                                     <td class="text-center text-danger">
-                                        <h4><strong id="total">$0.00</strong></h4>
+                                        <h4><strong id="showTotal">$0.00</strong></h4>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <button id="printPay" class="btn btn-success btn-lg btn-block">Print</button>
+                        <button id="printPay" class="btn btn-success btn-lg btn-block" onclick="printingPage('printingArea')">Print</button>
                         <button class="btn btn-success btn-lg btn-block" id="paymentBTN" disabled>
                             Pay Now <span class="glyphicon glyphicon-chevron-right"></span>
                         </button>                    
@@ -127,7 +128,7 @@
                 </div>
             </div>
         </div>
-    
+
         <script src="script/datepicker.js"></script>       
     </body>
 </html>

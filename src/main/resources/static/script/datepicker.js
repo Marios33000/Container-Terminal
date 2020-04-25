@@ -41,6 +41,7 @@ function allagi(index) {
     var showTaxFixed = showTax.toFixed(2);
     var showTotal = subtotal + showTax;
     var showTotalFixed = showTotal.toFixed(2);
+    
     $("#showSubtotal").replaceWith("<strong id='showSubtotal'>$" + subtotal + " </strong>");
     $("#showTax").replaceWith("<strong id='showTax'>$" + showTaxFixed + " </strong>");
     $("#showTotal").replaceWith("<h4><strong id='showTotal'>" + showTotalFixed + "</strong></h4>");

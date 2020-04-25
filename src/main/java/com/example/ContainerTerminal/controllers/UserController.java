@@ -64,19 +64,6 @@ public class UserController {
         return "gallery";
     }
 
-//    @GetMapping("/")
-//    public String start() {
-//
-//        return "loginPage";}
-//    public String start(){
-//    
-//    return "loginPage";
-//    }
-//    @GetMapping("/forgotPage.jsp")
-//    public String forgotPass(){
-//    
-//    return "forgotPass";
-//    }
     @PostMapping("/submitlogin")
     public String login(@RequestParam(name = "fname") String username,
             @RequestParam(name = "pas") String password, ModelMap mm, HttpSession session
@@ -138,7 +125,6 @@ public class UserController {
             String[] parts = string.split(" ");
             String part1 = parts[0]; // 20
             String part2 = parts[1]; // C
-
             if ("20".equals(part1)) {
                 pd.setWeight(33);
                 totalCounter += 33;
@@ -146,12 +132,10 @@ public class UserController {
                 pd.setWeight(43);
                 totalCounter += 43;
             }
-
             if ("N".equals(part2)) {
                 pd.setType(5);
                 totalCounter += 5;
             } else if ("C".equals(part2)) {
-
                 pd.setType(20);
                 totalCounter += 20;
             } else {
@@ -162,11 +146,6 @@ public class UserController {
             pd.setTotal(totalCounter);
             prices.add(pd);
         }
-
-//   mm.addAttribute("prices",prices);
-//    return "Payment";
-//   
-//}
         mm.addAttribute("prices", prices);
         return "paymentDetails1";
 
@@ -181,12 +160,10 @@ public class UserController {
         for (int i = 0; i < containers.size(); i++) {
             int totalCounter = 0;
             PriceDao pd = new PriceDao();
-
             String string = containers.get(i).getType();
             String[] parts = string.split(" ");
             String part1 = parts[0]; // 20
             String part2 = parts[1]; // C
-
             if ("20".equals(part1)) {
                 pd.setWeight(33);
                 totalCounter += 33;
@@ -194,30 +171,21 @@ public class UserController {
                 pd.setWeight(43);
                 totalCounter += 43;
             }
-
             if ("N".equals(part2)) {
                 pd.setType(5);
                 totalCounter += 5;
             } else if ("C".equals(part2)) {
-
                 pd.setType(20);
                 totalCounter += 20;
             } else {
                 pd.setType(50);
                 totalCounter += 50;
             }
-
             pd.setTotal(totalCounter);
             prices.add(pd);
         }
-
-//   mm.addAttribute("prices",prices);
-//    return "Payment";
-//   
-//}
         mm.addAttribute("prices", prices);
         return "Payment";
-
     }
 
     @GetMapping("/history")
@@ -233,14 +201,6 @@ public class UserController {
             }
 
         }
-
-//   all.get(0).getBookingnumber()
-//   all.get(0).getCustom()
-//   all.get(0).getPaid()
-//    for (Seawaybill seawaybill : all) {
-//        seawaybill.getBookingnumber()
-//    }
-//   
         mm.addAttribute("kappa", all);
 
         return "wb_table";

@@ -12,5 +12,8 @@ import java.util.List;
 public interface SeaWayBillInterface {
   
 public List<Seawaybill> getAll();
-    
+
+public Seawaybill findById(Integer id);
+   
+public void UpdateBill(Seawaybill s);
 }

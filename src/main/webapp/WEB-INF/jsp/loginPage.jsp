@@ -47,7 +47,7 @@
             </div>
             <div class="row" style="margin-left: 34%; margin-top: 5%;">
                 <button type="button" class="btn btn-link" id="fpass" style="color: white;">Forgot password?</button>
-
+                <a href="goToRegister" style="color: white;">Register</a>
 
             </div>
         </div>

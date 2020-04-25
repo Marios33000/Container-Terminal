@@ -10,5 +10,9 @@ import com.example.ContainerTerminal.models.User;
 
 public interface UserInterface {
  public User findByUsername(String username);
+ 
+ public void insertUser(User u);
+ public User findById(Integer id);
+ public void updateUser(User u);
 
 }

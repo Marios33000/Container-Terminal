@@ -64,12 +64,12 @@ $(".btn btn-primary").click(function() {
 <div class="text-center">
     <h3>Container Info</h3>
     <br>
-    <nav class="navbar navbar-light bg-light">
+<!--    <nav class="navbar navbar-light bg-light">
     <form class="form-inline" method="post" action="/search">
         <input class="form-control form-control-lg" type="search" name="search" placeholder="Booking Number" aria-label="Search">
       <button class="btn btn-primary" type="submit" >Search</button>
     </form>
-  </nav>
+  </nav>-->
 </div>
 </body>
 

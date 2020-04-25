@@ -17,6 +17,7 @@
         type="text/javascript"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
               rel="stylesheet" type="text/css" />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <style>
             body {
                 margin-top: 20px;
@@ -126,13 +127,7 @@
                 </div>
             </div>
         </div>
-
-
-
-
-        <script src="script/datepicker.js"></script> 
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    
+        <script src="script/datepicker.js"></script>       
     </body>
-
 </html>

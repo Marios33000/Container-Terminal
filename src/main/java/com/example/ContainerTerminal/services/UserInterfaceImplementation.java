@@ -21,6 +21,28 @@ User u=userrepository.findByUsername(username);
 return u;
     }
 
+    @Override
+    public void insertUser(User u) {
+                
+        userrepository.save(u);
+         
+    }
+
+    @Override
+    public User findById(Integer id) {
+             
+        User u= userrepository.findById(id).get();
+return u;
+    }
+
+    @Override
+    public void updateUser(User u) {
+          
+        userrepository.save(u);
+          
+
+    }
+
   
     
     

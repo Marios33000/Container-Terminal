@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>production</artifactId>
+    <artifactId>containerTerminal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>containerTerminal</name>
@@ -34,6 +34,12 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>5.1.6.RELEASE</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

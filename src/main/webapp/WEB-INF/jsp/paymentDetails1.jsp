@@ -26,6 +26,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <body>
         <h1>Invoice !</h1>
 

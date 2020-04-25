@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,12 +31,39 @@ public class UserController {
     @Autowired
     SeaWayBillInterface seawaybillinterface;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @GetMapping("/")
     public String start() {
 
+        return "index";
+    }
+
+    @GetMapping("/login")
+    public String goToLogIn() {
+
         return "loginPage";
     }
-    
+
+    @GetMapping("/contact")
+    public String goToContact() {
+
+        return "contact";
+    }
+
+    @GetMapping("/about")
+    public String goToAbout() {
+
+        return "about";
+    }
+
+    @GetMapping("/gallery")
+    public String goToGallery() {
+
+        return "gallery";
+    }
+
 //    @GetMapping("/")
 //    public String start() {
 //
@@ -59,9 +87,14 @@ public class UserController {
             return "loginPage";
 
         } else {
-            if (password.equals(u.getPassword())) {
+            if (passwordEncoder.matches(password, u.getPassword())) {
                 session.setAttribute("user", u);
-                return "welcome";
+                if (u.getRoleid().getRoleid() == 1) {
+                    return "adminPage";
+                } else {
+                    return "welcome";
+                }
+
             } else {
                 mm.addAttribute("message", "To password einai lathos");
                 return "loginPage";
@@ -124,7 +157,7 @@ public class UserController {
             } else {
                 pd.setType(50);
                 totalCounter += 50;
-            }         
+            }
 
             pd.setTotal(totalCounter);
             prices.add(pd);
@@ -138,7 +171,7 @@ public class UserController {
         return "paymentDetails1";
 
     }
-    
+
     @GetMapping("/payment1")
     public String goToPaymentDetails1(ModelMap mm, HttpSession session) {
 
@@ -172,7 +205,7 @@ public class UserController {
             } else {
                 pd.setType(50);
                 totalCounter += 50;
-            }         
+            }
 
             pd.setTotal(totalCounter);
             prices.add(pd);

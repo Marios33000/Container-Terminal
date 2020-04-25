@@ -104,11 +104,11 @@ public class Container implements Serializable {
         this.type = type;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

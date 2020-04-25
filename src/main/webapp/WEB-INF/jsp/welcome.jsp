@@ -85,7 +85,7 @@
                                 <center>
                                     <h3 style="margin-top: 0;color:#00001a">Logout</h3>
                                     <h1 class="glyphicon glyphicon-log-out" style="font-size:12em;color:#00001a"></h1>
-                                    <h2 style="margin-top: 0;color:#00001a"><a href="/" class="btn btn-sm btn-primary btn-block" role="button">Logout</a></h2>
+                                    <h2 style="margin-top: 0;color:#00001a"><a href="/login" class="btn btn-sm btn-primary btn-block" role="button">Logout</a></h2>
 
                                 </center>
                             </div>

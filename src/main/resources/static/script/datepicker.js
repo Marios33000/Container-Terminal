@@ -38,15 +38,18 @@ function allagi(index) {
     }
     console.log("Subtotal: " + subtotal);
     var showTax = (subtotal * 24) / 100;
+    var showTaxFixed = showTax.toFixed(2);
     var showTotal = subtotal + showTax;
+    var showTotalFixed = showTotal.toFixed(2);
     $("#showSubtotal").replaceWith("<strong id='showSubtotal'>$" + subtotal + " </strong>");
-    $("#showTax").replaceWith("<strong id='showTax'>$" + showTax + " </strong>");
-    $("#showTotal").replaceWith("<h4><strong id='showTotal'>" + showTotal + "</strong></h4>");
+    $("#showTax").replaceWith("<strong id='showTax'>$" + showTaxFixed + " </strong>");
+    $("#showTotal").replaceWith("<h4><strong id='showTotal'>" + showTotalFixed + "</strong></h4>");
 }
 
 function commitPayment() {
     console.log(arr1.length);
     console.log(arr.length);
+    arr.length = countIndex;
     if ((arr1.length === arr.length) && (arr1.length > 0)) {
         swal({
             title: "Caution",
@@ -64,6 +67,7 @@ function commitPayment() {
                     }
                     $("#commitBTN").prop("disabled", true);
                     $("#paymentBTN").prop("disabled", false);
+                    $("#printPay").prop("disabled", false);                    
                 });
             } else {
                 swal("Retype your dates.")
@@ -80,7 +84,7 @@ function commitPayment() {
 
 function printingPage(areaID) {
     var printContent = document.getElementById(areaID);
-    var WinPrint = window.open('', '', 'width=900,height=650'); 
+    var WinPrint = window.open('', '', 'width=900,height=650');
     WinPrint.document.write(printContent.innerHTML);
     WinPrint.document.close();
     WinPrint.focus();

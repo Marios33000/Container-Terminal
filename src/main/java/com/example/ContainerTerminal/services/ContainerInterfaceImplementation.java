@@ -25,6 +25,20 @@ public class ContainerInterfaceImplementation implements ContainerInterface {
     }
 
   
+    @Override
+    public Container findById(Integer id) {
+        Container c = containerrepo.findById(id).get();
+        return c;
+    }
+    
+    @Override
+    public void updateCon(Container s) {
+
+ 
+
+       containerrepo.save(s);
+      
+    }
     
     
     

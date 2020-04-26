@@ -25,10 +25,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author mario
- */
+
 @Entity
 @Table(name = "container")
 @XmlRootElement
@@ -64,10 +61,10 @@ public class Container implements Serializable {
     @NotNull
     @Column(name = "discharged")
     private short discharged;
-    @JoinColumn(name = "ordernumber", referencedColumnName = "bookingnumber")
+    @JoinColumn(name = "orderid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Seawaybill ordernumber;
-
+    private Seawaybill orderid;
+    
     public Container() {
     }
 
@@ -123,11 +120,11 @@ public class Container implements Serializable {
     }
 
     public Seawaybill getOrdernumber() {
-        return ordernumber;
+        return orderid;
     }
 
-    public void setOrdernumber(Seawaybill ordernumber) {
-        this.ordernumber = ordernumber;
+    public void setOrdernumber(Seawaybill orderid) {
+        this.orderid = orderid;
     }
 
     @Override

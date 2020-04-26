@@ -62,7 +62,7 @@ function commitPayment() {
                     for (var i = 0; i < index; i++) {
                         $("#datepicker1" + i).prop("disabled", true);
                     }
-                    
+                    $("#lala").replaceWith("<a  href='/goToPaypal' style='color:white' id='lala' >Pay now!</a>");
                     $("#commitBTN").prop("disabled", true);
                   
                     $("#paymentBTN").prop("disabled", false);

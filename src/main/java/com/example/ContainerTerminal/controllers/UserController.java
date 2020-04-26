@@ -13,6 +13,7 @@ import com.example.ContainerTerminal.services.UserInterface;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -121,9 +122,9 @@ PasswordEncoder passwordEncoder;
         if (exists == true) {
             session.setAttribute("containers", containers);
             mm.addAttribute("containers", containers);
-            return "c_table";
+            return "c_table_1";
         } else {
-      return "c_table";
+      return "c_table_1";
      }
     }
     
@@ -211,7 +212,7 @@ public String getHistoryOfUser(ModelMap mm,HttpSession session){
        
    mm.addAttribute("kappa",all);
    
-return "wb_table";
+return "wb_table_1";
 }
 
 
@@ -231,7 +232,7 @@ return "wb_table";
         @PostMapping(value ="/registerForm") 
     public String submitForm(
             @RequestParam(name="uname")String uname,
-           @RequestParam(name="pas")String pas,@RequestParam(name="afm")String afm,@RequestParam(name="doy")String doy,
+           @RequestParam(name="pas")String pas,@RequestParam(name="vat")String afm,@RequestParam(name="doy")String doy,
           @RequestParam(name="address")String address )
     {
         Role r=new Role();
@@ -249,24 +250,79 @@ return "wb_table";
     }
     
     
-    @GetMapping(value="/seeAllWaybills")
-  public String getAllWayBills(ModelMap mm){
-  List<Seawaybill> seaway=seawaybillinterface.getAll();
+      @GetMapping(value = "/seeAllWaybills")
+    public String getAllWayBills(ModelMap mm) {
+        List<Seawaybill> seaway = seawaybillinterface.getAll();
+        mm.addAttribute("all", seaway);
+        List<Container> container = containerinterface.getAllContainers();
+        mm.addAttribute("containers", container);
+        return "adminTable";
+    }
 
-  mm.addAttribute("all",seaway);
-  return "adminTable";}
-  
- @GetMapping(value="preupdate/{id}")
-    public String preupdate(@PathVariable (name="id")Integer id,
-            ModelMap mm){
-  
-        
-      Seawaybill s=seawaybillinterface.findById(id);
-      
+    @GetMapping(value = "preupdate/{id}")
+    public String preupdate(@PathVariable(name = "id") Integer id,
+            ModelMap mm) {
+
+        Seawaybill s = seawaybillinterface.findById(id);
+
+        mm.addAttribute("sea", s);
+
+        return "updateForm";
+    }
+
+    @GetMapping(value = "preUpdateCon/{id}")
+    public String preUpdateCon(@PathVariable(name = "id") Integer id,
+            ModelMap mm) {
+
+        Container c = containerinterface.findById(id);
+
+        mm.addAttribute("con", c);
+
+        return "updatedCon";
+    }
+
+    @PostMapping(value = "/updatedForm")
+    public String updateTrainer(@RequestParam(name = "uid") Integer id,
+            @RequestParam(name = "bn") String bn,
+            @RequestParam(name = "custom") Integer custom,
+            @RequestParam(name = "paid") Short paid,
+            @RequestParam(name = "userid") Integer userId) {
+        User user = userinterface.findById(userId);
+        Seawaybill temp = new Seawaybill();
+        temp.setId(id);
+        temp.setBookingnumber(bn);
+        temp.setCustom(custom);
+        temp.setPaid(paid);
+        temp.setUserid(user);
+
+        seawaybillinterface.UpdateBill(temp);
+
+        return "redirect:/seeAllWaybills";
+    }
+
+    @PostMapping(value = "/updatedCon")
+    public String updateTrainer(@RequestParam(name = "uid") Integer id,
+            @RequestParam(name = "bn") String bn,
+            @RequestParam(name = "type") String type,
+            @RequestParam(name = "disDate") String disDate,
+            @RequestParam(name = "dis") Short dis,
+            @RequestParam(name = "billId") Integer billId) {
+        Seawaybill bill = seawaybillinterface.findById(billId);
+        String[] parts = disDate.split("-");
+        int days = Integer.parseInt(parts[2]);
+        int mounth = Integer.parseInt(parts[1]);
+        int year = Integer.parseInt(parts[0]);
+        LocalDate date = LocalDate.of(year, mounth, days);
      
-    mm.addAttribute("sea", s);
-      
-    return "updateForm";
+        Container con = new Container();
+        con.setContainerid(id);
+        con.setContainername(bn);
+        con.setType(type);
+        con.setDate(date);
+        con.setDischarged(dis);
+        con.setOrdernumber(bill);
+        containerinterface.updateCon(con);
+        return "redirect:/seeAllWaybills";
     }
 
     
@@ -279,7 +335,63 @@ return "wb_table";
     
     
     
+
     
+    
+    
+    @GetMapping("/goToPaypal")
+    public String goToPaypal(){
+    return "home";}
+    
+    @Autowired
+	PaypalService service;
+
+	public static final String SUCCESS_URL = "welcome";
+	public static final String CANCEL_URL = "pay/cancel";
+
+	
+
+	@PostMapping("/pay")
+	public String payment(@ModelAttribute("order") Order order) {
+		try {
+			Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
+					order.getIntent(), order.getDescription(), "http://localhost:8080/" + CANCEL_URL,
+					"http://localhost:8080/" + SUCCESS_URL);
+			for(Links link:payment.getLinks()) {
+				if(link.getRel().equals("approval_url")) {
+					return "redirect:"+link.getHref();
+				}
+			}
+			
+		} catch (PayPalRESTException e) {
+		
+			e.printStackTrace();
+		}
+		return "redirect:/home";
+	}
+	
+	 @GetMapping(value = CANCEL_URL)
+	    public String cancelPay() {
+	        return "redirect:/payment";
+	    }
+
+	    @GetMapping(value = SUCCESS_URL)
+	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
+	        try {
+	            Payment payment = service.executePayment(paymentId, payerId);
+	            System.out.println(payment.toJSON());
+	            if (payment.getState().equals("approved")) {
+	                return "welcome";
+	            }
+	        } catch (PayPalRESTException e) {
+	         System.out.println(e.getMessage());
+	        }
+	        return "redirect:/home";
+	    }
+
+    
+}
+  
 //     @PostMapping(value = "/updateTrainer")
 //    public String updateTrainer(@RequestParam(name = "id") Integer id,
 //            @RequestParam(name = "bn") String bn,
@@ -333,58 +445,3 @@ return "wb_table";
 //
 //
 // }
-    
-    
-    
-    @GetMapping("/goToPaypal")
-    public String goToPaypal(){
-    return "home";}
-    
-    @Autowired
-	PaypalService service;
-
-	public static final String SUCCESS_URL = "welcome";
-	public static final String CANCEL_URL = "pay/cancel";
-
-	
-
-	@PostMapping("/pay")
-	public String payment(@ModelAttribute("order") Order order) {
-		try {
-			Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-					order.getIntent(), order.getDescription(), "http://localhost:8080/" + CANCEL_URL,
-					"http://localhost:8080/" + SUCCESS_URL);
-			for(Links link:payment.getLinks()) {
-				if(link.getRel().equals("approval_url")) {
-					return "redirect:"+link.getHref();
-				}
-			}
-			
-		} catch (PayPalRESTException e) {
-		
-			e.printStackTrace();
-		}
-		return "redirect:/home";
-	}
-	
-	 @GetMapping(value = CANCEL_URL)
-	    public String cancelPay() {
-	        return "cancel";
-	    }
-
-	    @GetMapping(value = SUCCESS_URL)
-	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
-	        try {
-	            Payment payment = service.executePayment(paymentId, payerId);
-	            System.out.println(payment.toJSON());
-	            if (payment.getState().equals("approved")) {
-	                return "welcome";
-	            }
-	        } catch (PayPalRESTException e) {
-	         System.out.println(e.getMessage());
-	        }
-	        return "redirect:/home";
-	    }
-
-    
-}

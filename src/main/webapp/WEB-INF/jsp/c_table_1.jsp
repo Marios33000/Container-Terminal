@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+   <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,15 +13,17 @@
    <script>$(document).ready( function () {
         $('#table_id').DataTable();
     } );</script>
-    <title>Container</title>
+    <title>Containers</title>
     
 </head>
-<body>
+<body style="background-image: url(/images/container.jpg);">
+   <div class="container-fluid">
+  
     <br>
     <h1 style="text-align:center">Container(s)</h1>
     <br>
     <br>
-    <table id="table_id" class="display">
+    <table id="table_id" class="display" style="background-color:rgb(233, 161, 93)">
         <thead>
             <tr>
                 <th>Id</th>
@@ -34,9 +35,7 @@
             </tr>
         </thead>
         <tbody>
-          
-            
-               <c:forEach items="${containers}" var="container">
+             <c:forEach items="${containers}" var="container">
                     <tr>
                         <td>${ container.getContainerid()}</td>
                         <td>${ container.getContainername()}</td>
@@ -65,20 +64,15 @@
 
             
             
-
+            
         </tbody>
     </table>
-
-
-    <a href="/payment">Get Payment Details </a>
-
-    <!-- <script> $('.btn btn-primary').on('click', function () {
-     console.log(clicked);
-        console.log( $(this).parent().parent().find('td:second').text());
-        
-        
-    });</script> -->
-<script>
+    <br>
+    <div style="text-align: center;"><a class="btn btn-warning btn-lg" href="/payment" role="button" >Payment preview</a></div>
+<br>
+    <div style="text-align:left;"><button type="button" class="btn btn-warning" onclick="history.back()"><i class="fa fa-arrow-circle-left"></i>Go back</button></div>
+</div>
+<!-- <script>
 $(".btn btn-primary").click(function() {
     var specificRow = $(this).closest("tr"),
         tdata = specificRow.find("td:nth-child(1)");
@@ -90,10 +84,7 @@ $(".btn btn-primary").click(function() {
 });
 
 
-
-
-
-</script>
+</script> -->
 
 
 </body>

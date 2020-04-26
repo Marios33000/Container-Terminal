@@ -14,5 +14,7 @@ public interface ContainerInterface {
   
    public List<Container> getAllContainers();
 
-
+public Container findById(Integer id);
+   
+    public void updateCon(Container s);
 }

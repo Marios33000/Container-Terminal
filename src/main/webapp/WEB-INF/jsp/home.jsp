@@ -109,12 +109,15 @@ span.price {
 }
 
     </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   
+
 </head>
 <body>
 <div class="row">
     <div class="col-75">
         <div class="container">
-            <form method="post"  action="/pay">
+            <form method="post"  action="/pay" >
                 <div class="col-50">
                     <h3>Payment</h3>
                     <label>Accepted Cards</label>
@@ -125,15 +128,20 @@ span.price {
                         <i class="fa fa-cc-discover" style="color:orange;"></i>
                     </div>
                     <label for="price">Total</label>
-                    <input type="text" id="price" name="price" >
+                    <input type="hidden" id="price" name="price" >
+                    <input type="text" id="price1" name="price1" disabled>
                     <label for="currency">Currency</label>
-                    <input type="text" id="currency" name="currency" placeholder="USD" value="USD">
+                    <input type="hidden" id="currency" name="currency" placeholder="USD" value="USD">
+                    <input type="text" id="currency1" name="currency1" placeholder="USD" value="USD" disabled>
                     <label for="method">Payment Method</label>
-                    <input type="text" id="method" name="method" placeholder="Paypal" value="paypal">
+                    <input type="hidden" id="method" name="method" placeholder="Paypal" value="paypal">
+                    <input type="text" id="method1" name="method1" placeholder="Paypal" value="paypal" disabled>
                     <label for="intent">Intent</label>
-                    <input type="text" id="intent" name="intent" value="sale">
+                    <input type="hidden" id="intent" name="intent" value="sale">
+                    <input type="text" id="intent1" name="intent1" value="sale" disabled>
                     <label for="description">Payment Description</label>
-                    <input type="text" id="description" name="description" placeholder="Payment " value="payment">
+                    <input type="hidden" id="description" name="description" placeholder="Payment " value="payment">
+                    <input type="text" id="description1" name="description1" placeholder="Payment " value="payment" disabled>
 
                 </div>
 
@@ -161,7 +169,8 @@ span.price {
 <script>
     
     $(document).ready(function(){
-       $("#price").replaceWith(" <input type='text' id='price' name='price' value='"+localStorage.getItem("total")+"' >");
+       $("#price").replaceWith(" <input type='hidden' id='price' name='price' value='"+localStorage.getItem("total")+"' >");
+       $("#price1").replaceWith(" <input type='text' id='price1' name='price1' value='"+localStorage.getItem("total")+"' disabled>");
     });
         
     

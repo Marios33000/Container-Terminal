@@ -25,10 +25,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author mario
- */
+
 @Entity
 @Table(name = "seawaybill")
 @XmlRootElement
@@ -59,7 +56,7 @@ public class Seawaybill implements Serializable {
     @NotNull
     @Column(name = "paid")
     private short paid;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ordernumber")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderid")
     private Collection<Container> containerCollection;
     @JoinColumn(name = "userid", referencedColumnName = "userid")
     @ManyToOne(optional = false)

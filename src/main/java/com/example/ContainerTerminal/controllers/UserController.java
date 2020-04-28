@@ -52,7 +52,7 @@ PasswordEncoder passwordEncoder;
     @GetMapping("/")
     public String start() {
         
-        return "index";
+        return "/index";
     }
 
     @GetMapping("/login")
@@ -389,6 +389,11 @@ return "wb_table_1";
 	        return "redirect:/home";
 	    }
 
+            @GetMapping("/goToSeeChat")
+            public String chat(){
+            
+            return "chat";
+            }
     
 }
   

@@ -37,6 +37,10 @@
                                 <a href="#" class="list-group-item ">
                                     <br/><br/><i class="glyphicon glyphicon-search"></i> Search Booking Number<br/><br/>
                                 </a>
+                                    <a href="#" class="list-group-item ">
+                                    <br/><br/><i class="glyphicon glyphicon-envelope"></i> Contact<br/><br/>
+                                </a>  
+                                
                                 <a href="#" class="list-group-item">
                                     <br/><br/><h4 class="glyphicon glyphicon-log-out"></h4> Logout<br/><br/>
                                 </a>
@@ -80,6 +84,18 @@
                                 </center>
                             </div>
 
+                                     <div class="bhoechie-tab-content">
+                                <center>
+                                    <h3 style="margin-top: 0;color:#00001a">Contact</h3>
+                                    <br>
+                                    <h1 class="glyphicon glyphicon-envelope" style="font-size:12em;color:#00001a"></h1>
+                                    <h2 style="margin-top: 0;color:#00001a;margin:20px;"><a href="/goToSeeChat" class="btn btn-sm btn-primary btn-block" role="button">Ask your Question</a></h2>
+
+                                </center>
+                            </div>
+
+                                
+                                
                             <div class="bhoechie-tab-content">
                                 <center>
                                     <h3 style="margin-top: 0;color:#00001a">Logout</h3>

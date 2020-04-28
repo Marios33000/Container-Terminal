@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Update Container</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
         <!-- jQuery library -->
@@ -16,8 +16,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
               rel="stylesheet" type="text/css" />
     </head>
-    <body>
-        <h1>Hello World!</h1>
+
 
 
 
@@ -42,6 +41,8 @@
 
         </form>
 
+            
+            
         <script>
             $(document).ready(function () {
                 $("#datepicker").datepicker({format: 'yyyy-mm-dd', autoclose: true, endDate: new Date()});

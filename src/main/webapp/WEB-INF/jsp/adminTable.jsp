@@ -21,13 +21,13 @@
         <title>Waybill history</title>
 
     </head>
-    <body>
+     <body style="background-color: rgb(241, 241, 213);">
         <br>
         <h1 style="text-align:center">Waybills</h1>
         <br>
         <br>
-        <table id="table_id" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">  
-            <!-- class:display -->
+      <table id="table_id" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="background-color: rgb(241, 241, 158);">
+        <!-- class:display -->
             <thead>
                 <tr>
 
@@ -77,8 +77,9 @@
         <h1 style="text-align:center">Container Info</h1>
         <br>
         <br>
-        <table id="table_id1" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">  
-            <!-- class:display -->
+        <table id="table_id1" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="background-color: rgb(241, 241, 158);" >
+        
+        <!-- class:display -->
             <thead>
                 <tr>
 

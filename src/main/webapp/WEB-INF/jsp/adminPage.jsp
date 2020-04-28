@@ -28,12 +28,16 @@
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
                             <ul class="list-group">
                                 <a href="#" class="list-group-item active">
-                                    <br/><br/><i class="glyphicon glyphicon-user"></i> Admin<br/><br/>
+                                    <br/><br/><i class="glyphicon glyphicon-user"></i> Admin<br/><br/>	
                                 </a>
                                 <a href="#" class="list-group-item ">
                                     <br/><br/><i class="glyphicon glyphicon-tasks"></i> Waybills<br/><br/>
                                 </a>  
-                            
+                             
+                                <a href="#" class="list-group-item  ">
+                                    <br/><br/><i class="glyphicon glyphicon-inbox"></i> Contact<br/><br/>
+                                </a>  
+                                
                                 <a href="#" class="list-group-item">
                                     <br/><br/><h4 class="glyphicon glyphicon-log-out"></h4> Logout<br/><br/>
                                 </a>
@@ -62,6 +66,17 @@
                                 </center>
                             </div>
 
+                                
+                            <div class="bhoechie-tab-content">
+                                <center>
+                                    <h3 style="margin-top: 0;color:#00001a">Messages</h3>
+                                    <br>
+                                    <h1 class="glyphicon glyphicon-inbox" style="font-size:12em;color:#00001a"></h1>
+                                    <h2 style="margin-top: 0;color:#00001a;margin:20px;"><a href="/goToSeeChat" class="btn btn-sm btn-primary btn-block" role="button">Chat</a></h2>
+
+                                </center>
+                            </div>
+                                
 
                             <div class="bhoechie-tab-content">
                                 <center>

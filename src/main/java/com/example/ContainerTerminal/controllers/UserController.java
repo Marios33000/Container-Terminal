@@ -282,7 +282,7 @@ return "wb_table_1";
     }
 
     @PostMapping(value = "/updatedForm")
-    public String updateTrainer(@RequestParam(name = "uid") Integer id,
+    public String updateContainer(@RequestParam(name = "uid") Integer id,
             @RequestParam(name = "bn") String bn,
             @RequestParam(name = "custom") Integer custom,
             @RequestParam(name = "paid") Short paid,
@@ -301,7 +301,7 @@ return "wb_table_1";
     }
 
     @PostMapping(value = "/updatedCon")
-    public String updateTrainer(@RequestParam(name = "uid") Integer id,
+    public String updateCont(@RequestParam(name = "uid") Integer id,
             @RequestParam(name = "bn") String bn,
             @RequestParam(name = "type") String type,
             @RequestParam(name = "disDate") String disDate,
@@ -397,56 +397,3 @@ return "wb_table_1";
     
 }
   
-//     @PostMapping(value = "/updateTrainer")
-//    public String updateTrainer(@RequestParam(name = "id") Integer id,
-//            @RequestParam(name = "bn") String bn,
-//            @RequestParam(name = "custom") Integer custom,
-//            @RequestParam(name = "paid") Short paid) {
-//
-//        Seawaybill temp = new Seawaybill();
-//       temp.setId(id);
-//       temp.setBookingnumber(bn);
-//temp.setCustom(custom);
-//temp.setPaid(paid);
-//
-//        seawaybillinterface.UpdateBill(temp);
-//
-//        return "redirect:/test";
-//    }
-//
-//
-//    @PostMapping(value = "/insertTrainer")
-//    public String insertTrainer(@Valid @ModelAttribute("Trainer") Seawaybill s,
-//            BindingResult br,
-//            ModelMap mm) {
-//
-//        if (br.hasErrors()) {
-//         
-//            mm.addAttribute("trainerList", seawaybillinterface.getAll());
-//            return "test";
-//        }
-//      seawaybillinterface.UpdateBill(s);
-//        return "redirect:/test";
-//    }
-//
-//    @ResponseBody
-//    @GetMapping(value = "/preUpdateTrainerSer")
-//    public Seawaybill preUpdateTrainerSer(@RequestParam(name = "id") Integer trainerId) {
-//
-//       Seawaybill optTrainer = seawaybillinterface.findById(trainerId);
-//
-//      return optTrainer;
-//    }
-//
-//
-//
-//
-//@GetMapping(value = "/getTrainerList")
-//    public String getTrainerList(ModelMap mm) {
-//        mm.addAttribute("trainerList",seawaybillinterface.getAll());
-//        Seawaybill p = new Seawaybill();
-//        mm.addAttribute("Trainer", p);
-//        return "trainersList";
-//
-//
-// }

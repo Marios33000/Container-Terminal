@@ -86,7 +86,7 @@ PasswordEncoder passwordEncoder;
     ) {
         User u = userinterface.findByUsername(username);
         if (u == null) {
-                      mm.addAttribute("message", "To username einai lathos");
+                      mm.addAttribute("message", "Invalid Username");
             return "loginPage" ;
 
         } else {
@@ -100,7 +100,7 @@ PasswordEncoder passwordEncoder;
                 }
         
             } else {
-             mm.addAttribute("message", "To password einai lathos");
+             mm.addAttribute("message", "Invalid Password ");
                 return "loginPage";
             }
         }
@@ -140,7 +140,7 @@ public String goToPaymentDetails(ModelMap mm,HttpSession session){
         PriceDao pd=new PriceDao();
       
         String string = containers.get(i).getType();
-String[] parts = string.split("-");
+String[] parts = string.split(" ");
 String part1 = parts[0]; // 20
 String part2 = parts[1]; // C
       
@@ -200,15 +200,7 @@ public String getHistoryOfUser(ModelMap mm,HttpSession session){
    
     }
    
-   
-//   all.get(0).getBookingnumber()
-//   all.get(0).getCustom()
-//   all.get(0).getPaid()
-  
-//    for (Seawaybill seawaybill : all) {
-//        seawaybill.getBookingnumber()
-//    }
-//   
+ 
        
    mm.addAttribute("kappa",all);
    
@@ -285,14 +277,15 @@ return "wb_table_1";
     public String updateContainer(@RequestParam(name = "uid") Integer id,
             @RequestParam(name = "bn") String bn,
             @RequestParam(name = "custom") Integer custom,
-            @RequestParam(name = "paid") Short paid,
+         
+            
             @RequestParam(name = "userid") Integer userId) {
         User user = userinterface.findById(userId);
         Seawaybill temp = new Seawaybill();
         temp.setId(id);
         temp.setBookingnumber(bn);
         temp.setCustom(custom);
-        temp.setPaid(paid);
+
         temp.setUserid(user);
 
         seawaybillinterface.UpdateBill(temp);
@@ -395,5 +388,9 @@ return "wb_table_1";
             return "chat";
             }
     
+            @GetMapping("/goToAdminPage")
+            public  String goToAdminPage(){
+            return "adminPage";}
+            
 }
   

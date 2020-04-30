@@ -3,7 +3,6 @@
   <persistence-unit name="com.example_ContainerTerminal_war_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.example.ContainerTerminal.models.Seawaybill</class>
-    <class>com.example.ContainerTerminal.models.Admin</class>
     <class>com.example.ContainerTerminal.models.User</class>
     <class>com.example.ContainerTerminal.models.Container</class>
     <class>com.example.ContainerTerminal.models.Role</class>

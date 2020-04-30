@@ -72,19 +72,6 @@
 <br>
     <div style="text-align:left;"><button type="button" class="btn btn-warning" onclick="history.back()"><i class="fa fa-arrow-circle-left"></i>Go back</button></div>
 </div>
-<!-- <script>
-$(".btn btn-primary").click(function() {
-    var specificRow = $(this).closest("tr"),
-        tdata = specificRow.find("td:nth-child(1)");
-
-    $.each(tdata, function() {
-        console.log($(this).text());
-    });
-    
-});
-
-
-</script> -->
 
 
 </body>

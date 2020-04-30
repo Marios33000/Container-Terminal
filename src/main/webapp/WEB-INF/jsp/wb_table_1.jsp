@@ -33,7 +33,7 @@
                
                 <th>Booking Number</th>
                 <th>Custom</th>
-                <th>Paid</th>
+               
                 <th>Container Number</th>
                
             </tr>
@@ -45,7 +45,7 @@
                           
                        <td>${ container.getBookingnumber()}</td>
                           <td>${ container.getCustom()}</td>
-                          <td>${ container.getPaid()}</td>
+                        
                           <td>${ container.getContainerCollection().size()}</td>
                     </tr>
     </c:forEach>

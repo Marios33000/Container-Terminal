@@ -17,6 +17,7 @@
     <form method="post" action="/submitlogin">
     <div class="outerClass">
         <div class="container innerClass shadow p-3 mb-5  ">
+            
             <h4 style="color: white;">Login Page</h4>
             <hr style="background-color: brown; height: 5px;" />
             <div class="row inp">
@@ -30,9 +31,10 @@
                         Show Password</label>  </div>
                       
                     </div>
-
+  <div style="color:red">${message}</div>
             <div class="row inp">
                 <div class="col-md-4"></div>
+                
                 <div class="col-md-4"><button id="submitBtn" class="btn btn-success"
                         style="background-color: brown; border-color:yellow;">Login</button>
                 </div>
@@ -43,10 +45,13 @@
                 <div style="text-align:center;"> <a href="/goToRegister" style="color: white;" >Sign up</a></div>
             
         </div>
-        
+      
     </div>
     <br>
-    <div style="text-align:center;"> <button type="button" class="btn btn-warning" onclick="history.back()"><i class="fa fa-arrow-circle-left"></i> Go back</button></div>
+
+    <div style="text-align:center;"> <a class="btn btn-warning" href="/" role="button"><i class="fa fa-arrow-circle-left"></i> Go back</a></div>
+
+    
     </form>
 
    

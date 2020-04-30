@@ -120,8 +120,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button id="printPay" class="btn btn-success btn-lg btn-block" onclick="printingPage('printingArea')" disabled>Print</button>
-                        <button  class="btn btn-success btn-lg btn-block" id="paymentBTN" disabled>
+                              <button  class="btn btn-success btn-lg btn-block" id="paymentBTN" disabled>
                             <a  style="color:white" id="lala" >Pay now!</a>
   <span class="glyphicon glyphicon-chevron-right"></span>
                         </button>                    

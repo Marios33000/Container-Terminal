@@ -34,11 +34,7 @@
 						<span for="">Custom</span>
 						<span class="border"></span>
 					</label>
-					<label class="form-group" >
-						<input type="text" name="paid" id="paid" class="form-control" value="${sea.getPaid()}">
-						<span for="">Paid</span>
-						<span class="border"></span>
-					</label>
+				
 					<label class="form-group" >
 						<input type="hidden" name="userid" id="userid" class="form-control" value="${sea.getUserid().getUserid()}" >
 					</label>
@@ -47,7 +43,9 @@
 					</button>
 				</form>
 			</div>
-		</div>
 		
-	</body>
+                </div>
+    
+                                        
+			</body>
 </html>

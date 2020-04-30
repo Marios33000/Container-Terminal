@@ -33,7 +33,7 @@
 
                     <th>Booking Number</th>
                     <th>Custom</th>
-                    <th>Paid</th>
+                   
                     <th>Container Numbers</th>
                     <th>Action</th>
 
@@ -55,7 +55,7 @@
                         <c:if test="${custom==0}">                    
                             <td><span class="material-icons">schedule</span></td>
                         </c:if>
-                        <td>${ bill.getPaid()}</td>
+                      
                         <td>${ bill.getContainerCollection().size()}</td>
                         <c:set var="paid" value="${ bill.getCustom()}"/>
                         <c:if test="${paid==0}">
@@ -129,7 +129,11 @@
 
             </tbody>
         </table>
-    </body>
+        <br>
+       <div style="text-align:center;"> <a class="btn btn-warning" href="/goToAdminPage" role="button">Go back</a></div>
+
+     
+     </body>
 
 
 

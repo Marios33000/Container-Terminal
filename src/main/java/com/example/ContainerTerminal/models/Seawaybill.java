@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Seawaybill.findById", query = "SELECT s FROM Seawaybill s WHERE s.id = :id"),
     @NamedQuery(name = "Seawaybill.findByBookingnumber", query = "SELECT s FROM Seawaybill s WHERE s.bookingnumber = :bookingnumber"),
     @NamedQuery(name = "Seawaybill.findByCustom", query = "SELECT s FROM Seawaybill s WHERE s.custom = :custom"),
-    @NamedQuery(name = "Seawaybill.findByPaid", query = "SELECT s FROM Seawaybill s WHERE s.paid = :paid")})
+
+})
 public class Seawaybill implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,10 +53,10 @@ public class Seawaybill implements Serializable {
     @NotNull
     @Column(name = "custom")
     private Integer custom;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "paid")
-    private short paid;
+//    @Basic(optional = false)
+//    @NotNull
+   // @Column(name = "paid")
+    //private short paid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderid")
     private Collection<Container> containerCollection;
     @JoinColumn(name = "userid", referencedColumnName = "userid")
@@ -69,11 +70,11 @@ public class Seawaybill implements Serializable {
         this.id = id;
     }
 
-    public Seawaybill(Integer id, String bookingnumber, Integer custom, short paid) {
+    public Seawaybill(Integer id, String bookingnumber, Integer custom) {
         this.id = id;
         this.bookingnumber = bookingnumber;
         this.custom = custom;
-        this.paid = paid;
+       // this.paid = paid;
     }
 
     public Integer getId() {
@@ -100,13 +101,13 @@ public class Seawaybill implements Serializable {
         this.custom = custom;
     }
 
-    public short getPaid() {
-        return paid;
-    }
-
-    public void setPaid(short paid) {
-        this.paid = paid;
-    }
+//    public short getPaid() {
+//        return paid;
+//    }
+//
+//    public void setPaid(short paid) {
+//        this.paid = paid;
+//    }
 
     @XmlTransient
     public Collection<Container> getContainerCollection() {

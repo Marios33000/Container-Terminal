@@ -49,9 +49,7 @@
                                     <h1 class="glyphicon glyphicon-user" style="font-size:14em;color:#00001a"></h1>
                                     <h2 style="margin-top: 0;color:#00001a">Welcome</h2>
                                     <h3 style="margin-top: 0;color:#00001a">${user.username}</h3>
-                                    <div style="margin-top: 0;color:#00001a">${user.address}</div>
-                                    <div style="margin-top: 0;color:#00001a">${user.afm}</div>
-                                    <div style="margin-top: 0;color:#00001a">${user.doy}</div>
+                                  
                                 </center>
                             </div>
 
